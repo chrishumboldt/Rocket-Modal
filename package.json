@@ -1,0 +1,28 @@
+{
+  "name": "Modalplate",
+  "version": "1.0.0",
+  "description": "A cool little modal plugin.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chrishumboldt/Modalplate.git"
+  },
+  "keywords": [
+    "CSS",
+    "Modalplate",
+    "Webplate",
+    "Responsive",
+    "SASS"
+  ],
+  "author": "Chris Humboldt",
+  "license": "Apache License, Version 2.0",
+  "bugs": {
+    "url": "https://github.com/chrishumboldt/Modalplate/issues"
+  },
+  "homepage": "http://getwebplate.com/plugins/modalplate",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-watch": "~0.5.3"
+  }
+}
