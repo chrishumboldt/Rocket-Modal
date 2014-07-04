@@ -1,6 +1,6 @@
 /**
- * SASS File: 		_import.scss
- * Type: 			import
+ * SASS File: 		_execute.scss
+ * Type: 			partial
  * Author:        	Chris Humboldt
  * Last Edited:   	4 July 2014
  */
@@ -8,15 +8,18 @@
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
-// Import
-// 
+// Modalplate CSS
 
 
-// Import
+// Modalplate CSS
 // ---------------------------------------------------------------------------------------
-@import "modal";
-@import "overlay";
+@mixin modalplate-css() {
 
-@import "execute";
+	// Overlay
+	@include modal-overlay();
+
+	// Modal
+	@include modal();
+}
 
 

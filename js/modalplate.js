@@ -48,7 +48,7 @@
 			$this_modal_trigger.on('click', function($ev)
 			{
 				$ev.preventDefault();
-				$this.modal_show();
+				$this.modal_reveal();
 			});
 
 			$('.modalplate-overlay, .modalplate .close').on('click', function($ev)
@@ -63,12 +63,12 @@
 		// Close the modal
 		modal_close 					: function()
 		{
-			$('html').removeClass('modalplate-show');
+			$('html').removeClass('modalplate-reveal');
 		},
-		// Open the modal
-		modal_show						: function()
+		// Reveal the modal
+		modal_reveal					: function()
 		{
-			$('html').addClass('modalplate-show');
+			$('html').addClass('modalplate-reveal');
 		},
 		// Add an overlay
 		overlay_add 					: function()
