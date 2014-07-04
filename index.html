@@ -10,15 +10,22 @@
     <title>Modalplate</title>
 
 	<!-- jQuery (Required) -->
-    <script src="js/jquery-v2.1.1.min.js"></script> 
+    <script src="js/min/jquery-v2.1.1.min.js"></script> 
 
     <!-- Include Modalplate -->
-    <script src="js/min/modaplate.min.js"></script>
+    <script src="js/modalplate.js"></script>
     <link href="css/modalplate.css" rel="stylesheet" type="text/css">
 
     <!-- Demo -->
     <link href="css/demo.css" rel="stylesheet" type="text/css">
-    <script></script>
+    <script>
+
+        $(document).ready(function()
+        {
+            $('.modal-trigger').modalplate();
+        });
+
+    </script>
     
 </head>
 <body>
@@ -28,6 +35,18 @@
 		<h3>Static Content Modal</h3>
 
 		<div class="block"><div class="confine">
+
+            <a href="#" class="modal-trigger" data-modal-open="modal-static">Open Static Modal</a>
+
+            <div class="modalplate" data-modal-id="modal-static">
+
+                <h3>Some Cool Heading</h3>
+
+                <a href="#" class="close">Click to Close</a>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar. Quisque aliquam lacus velit.</p>
+
+            </div>
 
 		</div></div>
 

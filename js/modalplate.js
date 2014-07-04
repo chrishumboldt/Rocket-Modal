@@ -2,7 +2,7 @@
  * jQuery File: 	modalplate.js
  * Type:			plugin
  * Author:        	Chris Humboldt
- * Last Edited:   	30 June 2014
+ * Last Edited:   	4 July 2014
  */
 
 
@@ -12,6 +12,8 @@
 	// Plugin setup & settings
 	var $plugin_name					= 'modalplate', $defaults =
 	{
+		overlay_template 				: '<div class="modalplate-overlay"></div>',
+		reveal 							: 'slide-from-top'
 	};
 	
 	// The actual plugin constructor
@@ -33,21 +35,48 @@
 		init 							: function()
 		{
 			// Variables
-			// ---------------------------------------------------------------------------------------
 			var $this 					= this;
-			var $settings 				= $this.settings;
+			var $this_modal_trigger		= $(this.element);
+			var $modal_id 				= $this_modal_trigger.data('modal-open');
+			var $this_modal 			= $('[data-modal-id='+ $modal_id +']');
 
+			// Setup
+			$this.overlay_add();
+			$this_modal.addClass($this.settings.reveal);
 
 			// Execute
-			// ---------------------------------------------------------------------------------------
-			// Public function
-			$this.public_function();
+			$this_modal_trigger.on('click', function($ev)
+			{
+				$ev.preventDefault();
+				$this.modal_show();
+			});
+
+			$('.modalplate-overlay, .modalplate .close').on('click', function($ev)
+			{
+				$ev.preventDefault();
+				$this.modal_close();
+			});
 		},
 
 		// Public functions
 		// ---------------------------------------------------------------------------------------
-		public_function 				: function($variable)
+		// Close the modal
+		modal_close 					: function()
 		{
+			$('html').removeClass('modalplate-show');
+		},
+		// Open the modal
+		modal_show						: function()
+		{
+			$('html').addClass('modalplate-show');
+		},
+		// Add an overlay
+		overlay_add 					: function()
+		{
+			if($('.modalplate-overlay').length == false)
+			{
+				$('body').append(this.settings.overlay_template);
+			}
 		}
 	};
 

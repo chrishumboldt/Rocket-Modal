@@ -48,4 +48,13 @@ body {
 	}
 }
 
+// Modal
+.modalplate {
+	padding: $space-small $space-base;
+
+	@include respond-to(large) {
+		padding: $space-base $space-medium;
+	}
+}
+
 

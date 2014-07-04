@@ -1,17 +1,19 @@
 /**
- * SASS File: 		modalplate.scss
- * Type: 			execute
+ * SASS File: 		_import.scss
+ * Type: 			import
  * Author:        	Chris Humboldt
- * Last Edited:   	30 June 2014
+ * Last Edited:   	4 July 2014
  */
 
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
-// Imports
+// Import
 
 
-// Imports
+// Import
 // ---------------------------------------------------------------------------------------
-@import "blueplate/import";
-@import "modalplate/import";
+@import "modal";
+@import "overlay";
+
+
