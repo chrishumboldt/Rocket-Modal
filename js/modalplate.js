@@ -48,26 +48,28 @@
 			$this_modal_trigger.on('click', function($ev)
 			{
 				$ev.preventDefault();
-				$this.modal_reveal();
+				$this.modal_reveal($this_modal);
 			});
 
 			$('.modalplate-overlay, .modalplate .close').on('click', function($ev)
 			{
 				$ev.preventDefault();
-				$this.modal_close();
+				$this.modal_close($this_modal);
 			});
 		},
 
 		// Public functions
 		// ---------------------------------------------------------------------------------------
 		// Close the modal
-		modal_close 					: function()
+		modal_close 					: function($this_modal)
 		{
+			$this_modal.removeClass('reveal');
 			$('html').removeClass('modalplate-reveal');
 		},
 		// Reveal the modal
-		modal_reveal					: function()
+		modal_reveal					: function($this_modal)
 		{
+			$this_modal.addClass('reveal');
 			$('html').addClass('modalplate-reveal');
 		},
 		// Add an overlay
