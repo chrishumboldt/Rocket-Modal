@@ -2,16 +2,25 @@
  * SASS File: 		modalplate.scss
  * Type: 			execute
  * Author:        	Chris Humboldt
- * Last Edited:   	30 June 2014
+ * Last Edited:   	4 July 2014
  */
 
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Imports
+// Execute Modaplate CSS
 
 
 // Imports
 // ---------------------------------------------------------------------------------------
 @import "blueplate/import";
 @import "modalplate/import";
+
+
+// Execute Modalplate CSS
+// ---------------------------------------------------------------------------------------
+// Call this mixin if you want to load up all the styles
+// @include modalplate-css();
+
+
