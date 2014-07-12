@@ -29,7 +29,7 @@ module.exports = function(grunt)
 		uglify: {
 			my_target: {
 				files: {
-					'js/min/jquery-v2.1.1.min.js': ['js/jquery-v2.1.1.js'],
+					'js/min/jquery-v1.10.2.min.js': ['js/jquery-v1.10.2.js'],
 					'js/min/modalplate.min.js': ['js/modalplate.js']
 				}
 			}
