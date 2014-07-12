@@ -82,21 +82,21 @@
 // Reveal modal
 // ---------------------------------------------------------------------------------------
 @mixin modal-reveal() {
-	.modalplate-reveal .modalplate {
+	.modalplate-reveal .modalplate.reveal {
 		top: 0;
 	}
 	// Appear
-	.modalplate-reveal .modalplate.appear,
-	.modalplate-reveal .modalplate.appear-scale {
+	.modalplate-reveal .modalplate.reveal.appear,
+	.modalplate-reveal .modalplate.reveal.appear-scale {
 		visibility: visible;
 		@include opacity(1);
 	}
-	.modalplate-reveal .modalplate.appear-scale {
+	.modalplate-reveal .modalplate.reveal.appear-scale {
 		@include transform-scale-3d(1, 1, 1);
 	}
 	// Sliding
-	.modalplate-reveal .modalplate.slide-from-left,
-	.modalplate-reveal .modalplate.slide-from-right {
+	.modalplate-reveal .modalplate.reveal.slide-from-left,
+	.modalplate-reveal .modalplate.reveal.slide-from-right {
 		left: 0;
 
 		// Respond
