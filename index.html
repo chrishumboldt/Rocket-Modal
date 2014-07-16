@@ -3,30 +3,30 @@
 <head>
 
 	<!-- Meta setup -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <!-- Title -->
-    <title>Modalplate</title>
+	<!-- Title -->
+	<title>Modalplate</title>
 
 	<!-- jQuery (Required) -->
-    <script src="js/min/jquery-v1.10.2.min.js"></script> 
+	<script src="js/min/jquery-v1.10.2.min.js"></script> 
 
-    <!-- Include Modalplate -->
-    <script src="js/modalplate.js"></script>
-    <link href="css/modalplate.css" rel="stylesheet" type="text/css">
+	<!-- Include Modalplate -->
+	<script src="js/modalplate.js"></script>
+	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
 
-    <!-- Demo -->
-    <link href="css/demo.css" rel="stylesheet" type="text/css">
-    <script>
+	<!-- Demo -->
+	<link href="css/demo.css" rel="stylesheet" type="text/css">
+	<script>
 
-        $(document).ready(function()
-        {
-            $('.modal-trigger').modalplate();
-        });
+		$(document).ready(function()
+		{
+			$('.modal-trigger').modalplate();
+		});
 
-    </script>
-    
+	</script>
+	
 </head>
 <body>
 
@@ -36,17 +36,26 @@
 
 		<div class="block"><div class="confine">
 
-            <a href="#" class="modal-trigger" data-modal-open="modal-static">Open Static Modal</a>
+			<!-- Modal trigger -->
+			<a href="#" class="modal-trigger" data-modal-open="modal-static">Open Static Modal</a>
 
-            <div class="modalplate" data-modal-id="modal-static">
+			<!-- Actual modal iteself -->
+			<div class="modalplate" data-modal-id="modal-static">
 
-                <h3>Some Cool Heading</h3>
+				<div class="modalplate-title-bar">
 
-                <a href="#" class="close">Click to Close</a>
+					<a href="#" class="close">Close</a>
+					<h3>Some Cool Heading</h3>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar. Quisque aliquam lacus velit.</p>
+				</div>
 
-            </div>
+				<div class="modalplate-content">
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar. Quisque aliquam lacus velit.</p>
+
+				</div>
+
+			</div>
 
 		</div></div>
 

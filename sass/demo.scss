@@ -2,7 +2,7 @@
  * SASS File: 		demo.scss
  * Type: 			execute
  * Author:        	Chris Humboldt
- * Last Edited:   	30 June 2014
+ * Last Edited:   	16 July 2014
  */
 
 
@@ -45,15 +45,6 @@ body {
 		@include respond-to(large) {
 			@include new-span(6);
 		}
-	}
-}
-
-// Modal
-.modalplate {
-	padding: $space-small $space-base;
-
-	@include respond-to(large) {
-		padding: $space-base $space-medium;
 	}
 }
 
