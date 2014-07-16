@@ -1,7 +1,7 @@
 Modalplate
 ==========
 
-A cool little modal plugin.
+A quick and simple plugin for producing responsive modals.
 
 
 Documentation
