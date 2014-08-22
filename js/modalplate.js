@@ -2,7 +2,7 @@
  * jQuery File: 	modalplate.js
  * Type:			plugin
  * Author:        	Chris Humboldt
- * Last Edited:   	29 July 2014
+ * Last Edited:   	22 August 2014
  */
 
 
@@ -13,7 +13,8 @@
 	var $plugin_name					= 'modalplate', $defaults =
 	{
 		overlay_template 				: '<div class="modalplate-overlay"></div>',
-		reveal 							: 'slide-from-top'
+		reveal 							: 'slide-from-top',
+		reveal_large					: false
 	};
 	
 	// The actual plugin constructor
@@ -30,26 +31,40 @@
 	
 	// Plugin
 	// ---------------------------------------------------------------------------------------
-	Plugin.prototype 					= 
+	Plugin.prototype 						= 
 	{
-		init 							: function()
+		init 								: function()
 		{
 			// Variables
-			var $this 					= this;
-			var $this_modal_trigger		= $(this.element);
-			var $modal_id 				= $this_modal_trigger.data('modal-open');
-			var $this_modal 			= $('[data-modal-id='+ $modal_id +']');
-			var $data_modal_reveal		= $this_modal.data('modal-reveal');
+			var $this 						= this;
+			var $this_modal_trigger			= $(this.element);
+			var $modal_id 					= $this_modal_trigger.data('modal-open');
+			var $this_modal 				= $('[data-modal-id='+ $modal_id +']');
+			var $data_modal_reveal			= $this_modal.data('modal-reveal');
+			var $data_modal_reveal_large	= $this_modal.data('modal-reveal-large');
+			var $modal_reveal 				= $this.settings.reveal;
+			var $modal_reveal_large			= $this.settings.reveal_large;
+			var $window_w 					= $(window).width();
 
 			// Setup
 			$this.overlay_add();
 			if($data_modal_reveal != undefined)
 			{
-				$this_modal.addClass($data_modal_reveal);
+				$modal_reveal 				= $data_modal_reveal;
 			}
-			else
+			if($data_modal_reveal_large != undefined)
 			{
-				$this_modal.addClass($this.settings.reveal);
+				$modal_reveal_large 		= $data_modal_reveal_large;
+			}
+
+			// Reveals
+			fc_set_modal_reveal();
+			if($this.settings.reveal_large != false)
+			{
+				$(window).resize(function()
+				{
+					fc_set_modal_reveal();
+				});
 			}
 
 			// Execute
@@ -64,6 +79,30 @@
 				$ev.preventDefault();
 				$this.modal_close($this_modal);
 			});
+
+			// Functions
+			function fc_set_modal_reveal()
+			{
+				if($this.settings.reveal_large != false)
+				{
+					$window_w 					= $(window).width();
+
+					if($window_w <= 700)
+					{
+						$this_modal.removeClass($modal_reveal_large);
+						$this_modal.addClass($modal_reveal);
+					}
+					else
+					{
+						$this_modal.removeClass($modal_reveal);
+						$this_modal.addClass($modal_reveal_large);
+					}
+				}
+				else
+				{
+					$this_modal.addClass($modal_reveal);
+				}
+			};
 		},
 
 		// Public functions
