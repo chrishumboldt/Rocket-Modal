@@ -42,20 +42,13 @@
 			var $this_modal 				= $('[data-modal-id='+ $modal_id +']');
 			var $data_modal_reveal			= $this_modal.data('modal-reveal');
 			var $data_modal_reveal_large	= $this_modal.data('modal-reveal-large');
-			var $modal_reveal 				= $this.settings.reveal;
-			var $modal_reveal_large			= $this.settings.reveal_large;
 			var $window_w 					= $(window).width();
 
 			// Setup
 			$this.overlay_add();
-			if($data_modal_reveal != undefined)
-			{
-				$modal_reveal 				= $data_modal_reveal;
-			}
-			if($data_modal_reveal_large != undefined)
-			{
-				$modal_reveal_large 		= $data_modal_reveal_large;
-			}
+			console.log($data_modal_reveal);
+			$this.settings.reveal			= $data_modal_reveal || $this.settings.reveal;
+			$this.settings.reveal_large		= $data_modal_reveal_large || $this.settings.reveal_large;
 
 			// Reveals
 			fc_set_modal_reveal();
@@ -85,22 +78,22 @@
 			{
 				if($this.settings.reveal_large != false)
 				{
-					$window_w 					= $(window).width();
+					$window_w 				= $(window).width();
 
 					if($window_w <= 700)
 					{
-						$this_modal.removeClass($modal_reveal_large);
-						$this_modal.addClass($modal_reveal);
+						$this_modal.removeClass($this.settings.reveal_large);
+						$this_modal.addClass($this.settings.reveal);
 					}
 					else
 					{
-						$this_modal.removeClass($modal_reveal);
-						$this_modal.addClass($modal_reveal_large);
+						$this_modal.removeClass($this.settings.reveal);
+						$this_modal.addClass($this.settings.reveal_large);
 					}
 				}
 				else
 				{
-					$this_modal.addClass($modal_reveal);
+					$this_modal.addClass($this.settings.reveal);
 				}
 			};
 		},
