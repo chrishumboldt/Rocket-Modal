@@ -8,6 +8,9 @@ module.exports = function(grunt)
 	// Default task
 	grunt.registerTask('default', ['watch']);
 
+	// Other tasks
+	grunt.registerTask('build', ['sass', 'uglify']);
+
 	// Initialize config
 	grunt.initConfig(
 	{
