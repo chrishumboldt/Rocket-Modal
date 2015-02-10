@@ -21,7 +21,7 @@ module.exports = function(grunt)
 			dist: {
 				options: {
 					style: 'compressed',
-					sourcemap: 'auto'
+					sourcemap: 'none'
 				},
 				files: {
 					'css/modalplate.css': 'sass/modalplate.scss',
