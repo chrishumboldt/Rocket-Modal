@@ -15,7 +15,7 @@
 // Overlay
 // ---------------------------------------------------------------------------------------
 @mixin modal-overlay() {
-	.modalplate-overlay {
+	#modalplate-overlay {
 		display: block;
 		position: fixed;
 		top: 0;
@@ -37,7 +37,7 @@
 // Reveal overlay
 // ---------------------------------------------------------------------------------------
 @mixin modal-show() {
-	.modalplate-reveal .modalplate-overlay {
+	.modalplate-reveal #modalplate-overlay {
 		@include respond-to(large) {
 			visibility: visible;
 			@include opacity(1);

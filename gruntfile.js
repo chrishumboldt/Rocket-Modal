@@ -1,5 +1,4 @@
-module.exports = function(grunt)
-{
+module.exports = function(grunt) {
 	// Load NPM tasks
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -12,8 +11,7 @@ module.exports = function(grunt)
 	grunt.registerTask('build', ['sass', 'uglify']);
 
 	// Initialize config
-	grunt.initConfig(
-	{
+	grunt.initConfig({
 		// Package
 		pkg: grunt.file.readJSON('package.json'),
 		// SASS
@@ -33,7 +31,6 @@ module.exports = function(grunt)
 		uglify: {
 			my_target: {
 				files: {
-					'js/min/jquery-v1.10.2.min.js': ['js/jquery-v1.10.2.js'],
 					'js/min/modalplate.min.js': ['js/modalplate.js']
 				}
 			}
@@ -44,6 +41,10 @@ module.exports = function(grunt)
 			css: {
 				files: '**/*.scss',
 				tasks: ['sass']
+			},
+			// HTML
+			html: {
+				files: ['*.html']
 			},
 			// Scripts
 			scripts: {

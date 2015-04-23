@@ -9,23 +9,12 @@
 	<!-- Title -->
 	<title>Modalplate</title>
 
-	<!-- jQuery (Required) -->
-	<script src="js/min/jquery-v1.10.2.min.js"></script> 
-
 	<!-- Include Modalplate -->
-	<script src="js/min/modalplate.min.js"></script>
+	<script src="js/modalplate.js"></script>
 	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
 
 	<!-- Demo -->
 	<link href="css/demo.css" rel="stylesheet" type="text/css">
-	<script>
-
-		$(document).ready(function()
-		{
-			$('.modal').modalplate();
-		});
-
-	</script>
 	
 </head>
 <body>
@@ -37,15 +26,36 @@
 		<div class="block"><div class="confine">
 
 			<!-- Modal trigger -->
-			<a href="http://www.google.com" data-modal-trigger="modal-static">Open Modal</a>
+			<a href="#" id="modal-static">Open Modal</a>
 
 			<!-- Actual modal iteself -->
-			<div class="modal" data-modal-id="modal-static" data-modal-trigger-min="700">
+			<div class="modal" data-modal-trigger="#modal-static">
 
 				<div class="modalplate-title-bar">
 
 					<a href="#" class="close">Close</a>
-					<h3>Some Cool Heading</h3>
+					<h3>Modal 1</h3>
+
+				</div>
+
+				<div class="modalplate-content">
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar. Quisque aliquam lacus velit.</p>
+
+				</div>
+
+			</div>
+
+			<!-- Modal trigger -->
+			<a href="#" id="modal-static-2">Open Modal</a>
+
+			<!-- Actual modal iteself -->
+			<div class="modal" data-modal-trigger="#modal-static-2" data-modal-reveal-large="from-top" data-modal-trigger-min="700">
+
+				<div class="modalplate-title-bar">
+
+					<a href="#" class="close">Close</a>
+					<h3>Modal 2</h3>
 
 				</div>
 
@@ -60,6 +70,10 @@
 		</div></div>
 
 	</div>	
+
+	<script>
+		new Modalplate('.modal');
+	</script>
 
 </body>
 </html>
