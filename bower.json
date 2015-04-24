@@ -6,7 +6,7 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A cool little modal plugin.",
-	"main": "js/min/modalplate.min.js",
+	"main": ["js/min/modalplate.min.js", "css/modalplate.css"],
 	"keywords": [
 		"Webplate",
 		"Modalplate",
