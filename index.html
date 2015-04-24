@@ -9,23 +9,12 @@
 	<!-- Title -->
 	<title>Modalplate</title>
 
-	<!-- jQuery (Required) -->
-	<script src="js/min/jquery-v1.10.2.min.js"></script> 
-
 	<!-- Include Modalplate -->
 	<script src="js/min/modalplate.min.js"></script>
 	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
 
 	<!-- Demo -->
 	<link href="css/demo.css" rel="stylesheet" type="text/css">
-	<script>
-
-		$(document).ready(function()
-		{
-			$('.modal').modalplate();
-		});
-
-	</script>
 	
 </head>
 <body>
@@ -37,15 +26,15 @@
 		<div class="block"><div class="confine">
 
 			<!-- Modal trigger -->
-			<a href="http://www.google.com" data-modal-trigger="modal-static">Open Modal</a>
+			<a href="#" class="modal-open">Open Modal</a>
 
 			<!-- Actual modal iteself -->
-			<div class="modal" data-modal-id="modal-static" data-modal-trigger-min="700">
+			<div class="modal">
 
 				<div class="modalplate-title-bar">
 
 					<a href="#" class="close">Close</a>
-					<h3>Some Cool Heading</h3>
+					<h3>Modal 1</h3>
 
 				</div>
 
@@ -57,9 +46,17 @@
 
 			</div>
 
+			<!-- Modal trigger -->
+			<a href="#" class="modal-open">Open Modal</a>
+
 		</div></div>
 
 	</div>	
+
+	<script>
+		// Call Modalplate
+		new Modalplate('.modal');
+	</script>
 
 </body>
 </html>

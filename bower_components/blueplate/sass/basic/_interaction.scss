@@ -1,22 +1,17 @@
 /**
- * SASS File: 		_import.scss
- * Type: 			import
- * Author:        	Chris Humboldt
- * Last Edited:   	4 July 2014
+ * File: _interaction.scss
+ * Type: SASS basic file
+ * Author: Chris Humboldt
+ * Last Edited: 22 April 2015
  */
-
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
-// Import
-// 
+// Cursor
 
-
-// Import
+// Cursor
 // ---------------------------------------------------------------------------------------
-@import "modal";
-@import "overlay";
-
-@import "execute";
-
+@mixin cursor($cursor: auto) {
+	cursor: $cursor;
+}
 
