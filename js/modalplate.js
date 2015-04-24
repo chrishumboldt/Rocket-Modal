@@ -78,7 +78,7 @@ function ModalplateComponent($this, $userOptions) {
 	this.options = {
 		reveal: 'slide-from-top',
 		revealLarge: false,
-		trigger: '.modal-open',
+		trigger: '.modal-trigger',
 		triggerMax: false,
 		triggerMin: false
 	};
