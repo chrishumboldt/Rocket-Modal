@@ -14,37 +14,44 @@
 
 // Functions
 // ---------------------------------------------------------------------------------------
-var webAddEvent = function($elem, $type, $eventHandle) {
-	if ($elem == null || typeof($elem) == 'undefined') return;
-	if ($elem.addEventListener) {
-		$elem.addEventListener($type, $eventHandle, false);
-	} else if ($elem.attachEvent) {
-		$elem.attachEvent("on" + $type, $eventHandle);
-	} else {
-		$elem["on" + $type] = $eventHandle;
-	}
-};
-var webClassAdd = function($selector, $class) {
-	var $crtClass = $selector.className;
+var tool = {
+	addEvent: function($elem, $type, $eventHandle) {
+		if ($elem == null || typeof($elem) == 'undefined') return;
+		if ($elem.addEventListener) {
+			$elem.addEventListener($type, $eventHandle, false);
+		} else if ($elem.attachEvent) {
+			$elem.attachEvent("on" + $type, $eventHandle);
+		} else {
+			$elem["on" + $type] = $eventHandle;
+		}
+	},
+	classAdd: function($selector, $class) {
+		var $crtClass = $selector.className;
 
-	if ($crtClass.indexOf($class) === -1) {
-		$selector.setAttribute('class', $crtClass + ' ' + $class);
-	}
-};
-var webClassRemove = function($selector, $class) {
-	var $crtClass = $selector.className;
+		if ($selector.className.indexOf($class) === -1) {
+			$selector.className = $selector.className === '' ? $class : $selector.className + ' ' + $class;
+		}
+	},
+	classRemove: function($selector, $class) {
+		var $crtClass = $selector.className;
 
-	if ($crtClass.indexOf($class) > -1) {
-		$selector.className = $selector.className.split(' ').filter(function($val) {
-			return $val != $class;
-		}).toString().replace(/,/g, ' ');
+		if ($crtClass.indexOf($class) > -1) {
+			$selector.className = $selector.className.split(' ').filter(function($val) {
+				return $val != $class;
+			}).toString().replace(/,/g, ' ');
+		}
+	},
+	hasClass: function($element, $class) {
+		return (' ' + $element.className + ' ').indexOf(' ' + $class + ' ') > -1;
+	},
+	idAdd: function($selector, $id) {
+		$selector.setAttribute('id', $id);
+	},
+	log: function($text) {
+		if (window.console) {
+			console.log($text);
+		}
 	}
-};
-var webHasClass = function($element, $class) {
-	return (' ' + $element.className + ' ').indexOf(' ' + $class + ' ') > -1;
-};
-var webIdAdd = function($selector, $id) {
-	$selector.setAttribute('id', $id);
 };
 
 // Plugin call
@@ -71,6 +78,7 @@ function ModalplateComponent($this, $userOptions) {
 	this.options = {
 		reveal: 'slide-from-top',
 		revealLarge: false,
+		trigger: '.modal-open',
 		triggerMax: false,
 		triggerMin: false
 	};
@@ -97,32 +105,45 @@ ModalplateComponent.prototype = {
 		var $element = this.element;
 		var $options = this.options;
 
-		var $modalTrigger = $element.getAttribute('data-modal-trigger');
+		var $htmlElement = document.getElementsByTagName('html')[0];
+		var $modalTrigger = $element.getAttribute('data-modal-trigger') || $options.trigger;
 		var $modalReveal = $element.getAttribute('data-modal-reveal') || $options.reveal;
 		var $modalRevealLarge = $element.getAttribute('data-modal-reveal-large') || $options.revealLarge;
 		var $modalTriggerMax = $element.getAttribute('data-modal-trigger-max') || $options.triggerMax;
 		var $modalTriggerMin = $element.getAttribute('data-modal-trigger-min') || $options.triggerMin;
 
 		// Setup
-		webClassAdd($element, 'modalplate');
+		tool.classAdd($element, 'modalplate');
 		setupOverlay();
 		setupReveal();
-		webAddEvent(window, 'resize', function() {
+		tool.addEvent(window, 'resize', function() {
 			setupReveal();
 		});
 
-		// Trigger event
+		// Show & hide
 		triggerReveal();
+		triggerClose();
 
 		// Functions
-		function modalReveal() {
+		function modalClose() {
+			if (tool.hasClass($htmlElement, 'modalplate-reveal')) {
+				tool.classRemove($element, 'reveal');
+				tool.classRemove($htmlElement, 'modalplate-reveal');
+			}
+		}
 
+		function modalReveal($ev) {
+			if (triggerCheck() && !tool.hasClass($htmlElement, 'modalplate-reveal')) {
+				$ev.preventDefault();
+				tool.classAdd($element, 'reveal');
+				tool.classAdd($htmlElement, 'modalplate-reveal');
+			}
 		};
 
 		function setupOverlay() {
 			if (document.getElementById('modalplate-overlay') === null) {
 				var $overlay = document.createElement('div');
-				webIdAdd($overlay, 'modalplate-overlay');
+				tool.idAdd($overlay, 'modalplate-overlay');
 				document.getElementsByTagName('body')[0].appendChild($overlay);
 			};
 		}
@@ -130,27 +151,14 @@ ModalplateComponent.prototype = {
 		function setupReveal($resizeCheck) {
 			if ($modalRevealLarge !== false) {
 				if (window.innerWidth <= 700) {
-					webClassRemove($element, $modalRevealLarge);
-					webClassAdd($element, $modalReveal);
+					tool.classRemove($element, $modalRevealLarge);
+					tool.classAdd($element, $modalReveal);
 				} else {
-					webClassRemove($element, $modalReveal);
-					webClassAdd($element, $modalRevealLarge);
+					tool.classRemove($element, $modalReveal);
+					tool.classAdd($element, $modalRevealLarge);
 				}
 			} else {
-				webClassAdd($element, $modalReveal);
-			}
-		};
-
-		function triggerReveal() {
-			if ($modalTrigger.charAt(0) === '.') {
-
-			} else if ($modalTrigger.charAt(0) === '#') {
-				document.getElementById($modalTrigger.substring(1)).onclick = function($ev) {
-					if (triggerCheck() === true) {
-						$ev.preventDefault();
-						modalReveal();
-					}
-				};
+				tool.classAdd($element, $modalReveal);
 			}
 		};
 
@@ -165,6 +173,35 @@ ModalplateComponent.prototype = {
 				return false;
 			};
 		}
+
+		function triggerClose() {
+			var $closeTriggers = document.querySelectorAll('#modalplate-overlay, .modalplate .close');
+			for (var $i = 0; $i < $closeTriggers.length; $i++) {
+				$closeTriggers[$i].onclick = function($ev) {
+					return function($ev) {
+						$ev.preventDefault();
+						modalClose();
+					};
+				}($i);
+			};
+		};
+
+		function triggerReveal() {
+			if ($modalTrigger.charAt(0) === '.') {
+				var $classTriggers = document.querySelectorAll($modalTrigger);
+				for (var $i = 0; $i < $classTriggers.length; $i++) {
+					$classTriggers[$i].onclick = function($ev) {
+						return function($ev) {
+							modalReveal($ev);
+						};
+					}($i);
+				}
+			} else if ($modalTrigger.charAt(0) === '#') {
+				document.getElementById($modalTrigger.substring(1)).onclick = function($ev) {
+					modalReveal($ev);
+				};
+			}
+		};
 	}
 };
 
