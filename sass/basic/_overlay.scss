@@ -2,7 +2,7 @@
  * SASS File: 		_overlay.scss
  * Type: 			partial
  * Author:        	Chris Humboldt
- * Last Edited:   	4 July 2014
+ * Last Edited:   	24 April 2015
  */
 
 
@@ -22,7 +22,7 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: fade-out($cloud, 0.2);
+		background-color: fade-out($black-base, 0.4);
 		z-index: 1000;
 		visibility: hidden;
 		@include opacity(0);
