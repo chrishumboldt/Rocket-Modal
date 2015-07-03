@@ -33,11 +33,11 @@
 	</div>	
 
 	<script>
-		document.getElementById('modal-example').onclick = function($ev) {
+		document.getElementById('modal-example').onclick = function(event) {
 			new modalplate({
 				heading: 'An Example Modal',
 				body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar.</p>',
-				parseEvent: $ev
+				parseEvent: event
 			});
 		};
 	</script>
