@@ -1,8 +1,7 @@
 /**
- * File: _import.scss
- * Type: SASS import file
+ * File: _imports.scss
+ * Type: SASS import
  * Author: Chris Humboldt
- * Last Edited: 23 April 2015
  */
 
 // Table of contents
@@ -12,9 +11,9 @@
 // Blueplate
 @import "../bower_components/blueplate/sass/import";
 
-// Basic
-@import "basic/modal";
-@import "basic/overlay";
+// Module
+@import "module/modal";
+@import "module/overlay";
 
 // CSS
 @import "css/execute"
