@@ -7,7 +7,7 @@ A quick and simple plugin for producing responsive modals.
 Documentation
 =========
 
-For a more detailed explanation and a complete overview of all the options available, read the online documentation at http://getwebplate.com/plugins/modalplate.
+Read the online documentation at http://paypur.com/#/view/modalplate.
 
 
 Author
