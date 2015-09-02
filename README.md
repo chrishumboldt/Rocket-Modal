@@ -1,8 +1,12 @@
 #Modalplate
 A cool modal plugin.
 
+<<<<<<< HEAD
 ## Getting Started
 You can either download a copy of the source files or install Modalplate via Bower.
+=======
+A quick and simple plugin for producing responsive modals.
+>>>>>>> master
 
 ```
 bower install modalplate
@@ -10,6 +14,7 @@ bower install modalplate
 
 Start by including the necessary files.
 
+<<<<<<< HEAD
 ```
 <head>
    <link href="css/modalplate.css" rel="stylesheet" type="text/css">
@@ -18,6 +23,9 @@ Start by including the necessary files.
    <script src="js/min/modalplate.js"></script>
 </body>
 ```
+=======
+Coming soon.
+>>>>>>> master
 
 ## Basic Example
 See a basic example of how to use the component.
@@ -77,8 +85,16 @@ Website: <a href="http://chrishumboldt.com/">chrishumboldt.com</a><br>
 Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</a><br>
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
+<<<<<<< HEAD
 ## Copyright and License
 Copyright 2015 Webplate Project
+=======
+
+Copyright and License
+=========
+
+Copyright 2015 Savedge Project
+>>>>>>> master
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
