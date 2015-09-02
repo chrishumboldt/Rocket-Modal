@@ -41,11 +41,11 @@ See the different options you have available on component call.
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
 body | false | | You can make the body whatever you would like to display.
-breakpoint | 700 | | Set the breakpoint of the modal to change from a fullscreen modal to a standard content modal.
+breakpoint | 700 | | Set the breakpoint of the modal (in pixels) to change from a fullscreen modal to a standard content modal.
 classAdd | false | | Set a class to the containing modal.
 close | close | | Set the text or inner HTML of the close link.
-heading | false | | You can make the heading whatever you would like. A false value will not display the heading.
-overlay | true | true, false | Set whether or not you want the overlay to display on message open.
+heading | false | | You can make the heading whatever you would like.
+overlay | true | true, false | Set whether or not you want the overlay to display on modal open.
 parseEvent | false | true, false | Parse the event of a click to prevent the default link behavior.
 reveal | slide-from-top | appear, appear-scale, slide-from-bottom, slide-from-left, slide-from-right, slide-from-top | Set the reveal animation.
 revealLarge | false | appear, appear-scale, slide-from-bottom, slide-from-left, slide-from-right, slide-from-top | Set the reveal animation after the breakpoint has been reached. **NOTE** that false means the already existing reveal animation will be used.
