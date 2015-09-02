@@ -1,7 +1,7 @@
 {
 	"name": "modalplate",
-	"version": "2.0.7",
-	"description": "A cool modal plugin.",
+	"version": "2.0.8",
+	"description": "A Javascript modal component.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/chrishumboldt/Modalplate.git"
