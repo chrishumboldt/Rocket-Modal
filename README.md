@@ -1,5 +1,5 @@
 #Modalplate
-A cool modal plugin.
+A Javascript modal component.
 
 ## Getting Started
 You can either download a copy of the source files or install Modalplate via Bower.
