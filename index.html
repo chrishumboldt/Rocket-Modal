@@ -5,41 +5,78 @@
 	<!-- Meta setup -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
 	<!-- Title -->
 	<title>Modalplate</title>
-
-	<!-- Include Modalplate -->
-	<script src="js/modalplate.js"></script>
+	<!-- Styles -->
 	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
-
-	<!-- Demo -->
 	<link href="css/demo.css" rel="stylesheet" type="text/css">
-	
+
 </head>
 <body>
 
+	<div class="heading">
+      <div class="container"><h2>Modalplate Component</h2></div>
+   </div>
 	<div class="container">
+		<h4>Getting Started</h4>
+		<p>You can either download a copy of the source files or install Modalplate via Bower.</p>
+<pre class="prettyprint linenums">
+bower install modalplate
+</pre>
+		<p>Start by including the necessary files.</p>
+<pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;link href=&quot;css/modalplate.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    /* Your content goes here */
+    &lt;script src=&quot;js/min/modalplate.js&quot;>&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+		<br>
+		<h4>Basic Example</h4>
+		<p>See a basic example of how to use the component.</p>
+<pre class="prettyprint linenums">
+&lt;a href id="example"&gt;Open Modal&lt;/a&gt;
+&lt;script&gt;
+document.getElementById('example').onclick = function(event) {
+   new modalplate({
+      heading: 'Example Modal',
+      body: 'Here is the body text.',
+      parseEvent: event
+   });
+};
+&lt;/script&gt;
+</pre>
+		<br>
+		<h4>Working Example</h4>
+		<a href id="example" class="link">Open Modal</a>
+		<br><br>
+      <h4>Detailed Documentation</h4>
+      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Modalplate" class="link">https://github.com/chrishumboldt/Modalplate</a></p>
+	</div>
 
-		<h3>Static Content Modal</h3>
+	<footer><div class="container"><div class="col-double">
+		<div class="left">
+			Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
+		</div>
+		<div class="right">
+			A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
+			Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
+		</div>
+	</div></div></footer>
 
-		<div class="block"><div class="confine">
-
-			<!-- Call modal -->
-			<a href="#" id="modal-example">Open Modal</a>
-
-		</div></div>
-
-	</div>	
-
+	<!-- Scripts -->
+	<script src="js/modalplate.js"></script>
+	<script src="js/demo.js"></script>
 	<script>
-		document.getElementById('modal-example').onclick = function(event) {
-			new modalplate({
-				heading: 'An Example Modal',
-				body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar.</p>',
-				parseEvent: event
-			});
-		};
+	document.getElementById('example').onclick = function(event) {
+		new modalplate({
+			heading: 'An Example Modal',
+			body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar.</p>',
+			parseEvent: event
+		});
+	};
 	</script>
 
 </body>
