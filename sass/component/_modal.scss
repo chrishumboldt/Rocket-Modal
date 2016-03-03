@@ -1,19 +1,15 @@
 /**
- * File: _modal.scss
- * Type: SASS basic file
+ * File: sass/component/_modal.scss
+ * Type: SASS component
  * Author: Chris Humboldt
- * Last Edited: 23 April 2015
  */
 
 // Table of contents
-// ---------------------------------------------------------------------------------------
 // Modal
 // Reveal animations
 // Show modal
 
-
 // Modal
-// ---------------------------------------------------------------------------------------
 @mixin modal() {
 	#modalplate {
 		@include display(block);
@@ -149,5 +145,3 @@
 		}
 	}
 }
-
-
