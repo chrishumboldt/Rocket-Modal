@@ -1,4 +1,4 @@
-# Modalplate
+#Modalplate
 A Javascript modal component.
 
 ## Getting Started
@@ -12,10 +12,10 @@ Start by including the necessary files.
 
 ```
 <head>
-   <link href="css/modalplate.min.css" rel="stylesheet" type="text/css">
+   <link href="css/modalplate.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-   <script src="js/modalplate.min.js"></script>
+   <script src="js/min/modalplate.js"></script>
 </body>
 ```
 
@@ -78,7 +78,7 @@ Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
-Copyright 2016 Webplate Project
+Copyright 2015 Webplate Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

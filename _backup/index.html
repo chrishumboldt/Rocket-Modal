@@ -2,20 +2,21 @@
 <html>
 <head>
 
+	<!-- Meta setup -->
 	<meta charset="utf-8">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Modalplate Component</title>
-	<link href="css/demo.min.css" rel="stylesheet" type="text/css">
-	<link href="css/modalplate.min.css" rel="stylesheet" type="text/css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+	<!-- Title -->
+	<title>Modalplate</title>
+	<!-- Styles -->
+	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
+	<link href="css/demo.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-	<div class="heading"><div class="container">
-		<h2>Modalplate Component</h2>
-	</div></div>
-
+	<div class="heading">
+      <div class="container"><h2>Modalplate Component</h2></div>
+   </div>
 	<div class="container">
 		<h4>Getting Started</h4>
 		<p>You can either download a copy of the source files or install Modalplate via Bower.</p>
@@ -65,8 +66,18 @@ document.getElementById('example').onclick = function(event) {
 		</div>
 	</div></div></footer>
 
-	<script src="js/demo.min.js"></script>
-	<script src="js/modalplate.min.js"></script>
+	<!-- Scripts -->
+	<script src="js/modalplate.js"></script>
+	<script src="js/demo.js"></script>
+	<script>
+	document.getElementById('example').onclick = function(event) {
+		new modalplate({
+			heading: 'An Example Modal',
+			body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar.</p>',
+			parseEvent: event
+		});
+	};
+	</script>
 
 </body>
 </html>

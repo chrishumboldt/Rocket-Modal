@@ -35,8 +35,8 @@
     "tag": "v1.6.7",
     "commit": "ebd576627a9a0a350d0c723a1883ee99512fad6f"
   },
-  "_source": "git://github.com/chrishumboldt/Blueplate.git",
-  "_target": "~1.6.7",
+  "_source": "https://github.com/chrishumboldt/Blueplate.git",
+  "_target": "^1.6.7",
   "_originalSource": "blueplate",
   "_direct": true
 }
