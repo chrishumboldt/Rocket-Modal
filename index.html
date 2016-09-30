@@ -2,45 +2,49 @@
 <html>
 <head>
 
-	<!-- Meta setup -->
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-	<!-- Title -->
-	<title>Modalplate</title>
-	<!-- Styles -->
-	<link href="css/modalplate.css" rel="stylesheet" type="text/css">
-	<link href="css/demo.css" rel="stylesheet" type="text/css">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Modalplate Component</title>
+	<link href="bower_components/webplate-demo/css/demo.min.css" rel="stylesheet" type="text/css">
+	<link href="css/modalplate.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-	<div class="heading">
-      <div class="container"><h2>Modalplate Component</h2></div>
-   </div>
-	<div class="container">
-		<h4>Getting Started</h4>
-		<p>You can either download a copy of the source files or install Modalplate via Bower.</p>
+	<div id="web-demo-message">
+		You need to run "bower install" and include the neccessary demo files in order to view this file.
+	</div>
+
+	<div id="web-demo" style="display:none;">
+		<div class="heading"><div class="container">
+			<h2>Modalplate Component</h2>
+		</div></div>
+
+		<div class="container">
+			<h4>Getting Started</h4>
+			<p>You can either download a copy of the source files or install Modalplate via Bower.</p>
 <pre class="prettyprint linenums">
 bower install modalplate
 </pre>
-		<p>Start by including the necessary files.</p>
+			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/modalplate.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;css/modalplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/min/modalplate.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;js/modalplate.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
-		<br>
-		<h4>Basic Example</h4>
-		<p>See a basic example of how to use the component.</p>
+			<br>
+			<h4>Basic Example</h4>
+			<p>See a basic example of how to use the component.</p>
 <pre class="prettyprint linenums">
-&lt;a href id="example"&gt;Open Modal&lt;/a&gt;
+&lt;a href id="modal-link-1"&gt;Open New Modal&lt;/a&gt;
 &lt;script&gt;
-document.getElementById('example').onclick = function(event) {
-   new modalplate({
+document.getElementById('modal-link-1').onclick = function(event) {
+   modalplate.init({
       heading: 'Example Modal',
       body: 'Here is the body text.',
       parseEvent: event
@@ -48,32 +52,70 @@ document.getElementById('example').onclick = function(event) {
 };
 &lt;/script&gt;
 </pre>
-		<br>
-		<h4>Working Example</h4>
-		<a href id="example" class="link">Open Modal</a>
-		<br><br>
-      <h4>Detailed Documentation</h4>
-      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Modalplate" class="link">https://github.com/chrishumboldt/Modalplate</a></p>
+			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
+<pre class="prettyprint linenums">
+&lt;a href id="modal-link-2"&gt;Open Linked Modal&lt;/a&gt;
+
+&lt;div id="modal-2" class="modalplate"&gt;
+    &lt;div class="modalplate-heading"&gt;
+        &lt;h6&gt;The Linked Modal Heading&lt;/h6&gt;
+    &lt;/div&gt;
+    &lt;div class="modalplate-body"&gt;
+        This is the modal body.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.getElementById('modal-link-2').onclick = function(event) {
+    modalplate.init({
+        targetModal: '#modal-2',
+        parseEvent: event
+    });
+};
+&lt;/script&gt;
+</pre>
+			<br>
+			<h4>Working Example</h4>
+			<a href id="modal-link" class="link">Open New Modal</a><br>
+			<a href id="modal-link-2" class="link">Open Linked Modal</a>
+			<br><br>
+	      <h4>Detailed Documentation</h4>
+	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Modalplate" class="link">https://github.com/chrishumboldt/Modalplate</a></p>
+		</div>
+
+		<footer><div class="container"><div class="col-double">
+			<div class="left">
+				Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
+			</div>
+			<div class="right">
+				A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
+				Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
+			</div>
+		</div></div></footer>
+
+		<div id="modal-2" class="modalplate">
+			<div class="modalplate-heading">
+				<h6>The Linked Modal Heading</h6>
+			</div>
+			<div class="modalplate-body">
+				This is the modal body.
+			</div>
+		</div>
 	</div>
 
-	<footer><div class="container"><div class="col-double">
-		<div class="left">
-			Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
-		</div>
-		<div class="right">
-			A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
-			Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
-		</div>
-	</div></div></footer>
-
-	<!-- Scripts -->
-	<script src="js/modalplate.js"></script>
-	<script src="js/demo.js"></script>
+	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
+	<script src="js/modalplate.min.js"></script>
 	<script>
-	document.getElementById('example').onclick = function(event) {
-		new modalplate({
-			heading: 'An Example Modal',
-			body: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis mauris mi. Quisque sodales vel orci eu consequat. Morbi lacinia, ligula sit amet commodo interdum, ligula tortor rhoncus elit, quis pretium orci nunc nec nisi. Nunc ultrices dui et erat elementum, vel ultricies erat pellentesque. Sed pretium libero ullamcorper turpis malesuada pretium. Fusce vitae ultrices massa. Morbi mollis erat at urna imperdiet, sit amet malesuada lacus pulvinar.</p>',
+	document.getElementById('modal-link').onclick = function(event) {
+		modalplate.init({
+			heading: 'The New Modal Heading',
+			body: 'The modal body goes here.',
+			parseEvent: event
+		});
+	};
+	document.getElementById('modal-link-2').onclick = function (event) {
+		modalplate.init({
+			targetModal: '#modal-2',
 			parseEvent: event
 		});
 	};

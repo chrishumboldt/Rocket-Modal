@@ -1,33 +1,28 @@
 {
-	"name": "modalplate",
-	"version": "2.0.8",
-	"homepage": "http://getwebplate.com/plugins/modalplate",
-	"authors": [
-		"Chris Humboldt <chrismodem@gmail.com>"
-	],
-	"description": "A cool modal plugin.",
-	"main": ["js/min/modalplate.js", "css/modalplate.css"],
-	"keywords": [
-		"Modal",
-		"Component",
-		"Javascript",
-		"Webplate",
-		"Responsive"
-	],
-	"license": "Apache License, Version 2.0",
-	"ignore": [
-		"**/.*",
-		"node_modules",
-		"bower_components",
-		"test",
-		"tests",
-		"gulpfile.js",
-		"package.json",
-		"index.html",
-		"bower.json",
-		"css/demo.css",
-		"js/demo.js",
-		"js/min/demo.js",
-		"sass"
-	]
+   "name": "modalplate",
+   "homepage": "https://github.com/chrishumboldt/Modalplate",
+   "authors": [
+      "Chris Humboldt <chrismodem@gmail.com>"
+   ],
+   "description": "A Javascript modal component.",
+   "main": ["css/modalplate.min.css", "js/modalplate.min.js"],
+   "keywords": [
+      "Webplate",
+      "Component",
+      "Modal",
+      "Javascript",
+      "CSS"
+   ],
+   "license": "Apache-2.0",
+   "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "bower.json",
+      "index.html"
+   ],
+	"devDependencies": {
+		"blueplate": "^2.0.0",
+		"webplate-demo": "^1.0.0"
+	}
 }
