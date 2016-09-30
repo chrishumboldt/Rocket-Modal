@@ -4,7 +4,7 @@
    "authors": [
       "Chris Humboldt <chrismodem@gmail.com>"
    ],
-   "description": "A modal component.",
+   "description": "A Javascript modal component.",
    "main": ["css/modalplate.min.css", "js/modalplate.min.js"],
    "keywords": [
       "Webplate",
