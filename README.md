@@ -52,6 +52,15 @@ revealLarge | false | appear, appear-scale, slide-from-bottom, slide-from-left, 
 targetModal | false | | Instead of creating a new modal, you can open an existing modal with a particular selector.
 trigger | always | always, small, large | Set when you want the modal trigger to fire. Small is below the breakpoint, large above the breakpoint and always is always.
 
+** Defaults
+
+You can also set or overwrite the above options globally by altering the Modalplate defaults. To do so reference the defaults object property. For example:
+
+```js
+modalplate.defaults.reveal = 'appear-scale';
+modalplate.defaults.close = 'Exit';
+```
+
 ## Modal Link
 If you want to open a modal that has existing HTML, then link to the modal. **Note** that a predefined HTML structure is required.
 
@@ -98,7 +107,7 @@ document.getElementById('modal-link').onclick = function(event) {
 ```
 
 ## On Done
-You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. The function return the modal element. See an example below.
+You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. The function returns the modal element. See an example below.
 
 ```javascript
 document.getElementById('modal-link').onclick = function (event) {
