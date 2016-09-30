@@ -3,3 +3,8 @@
  * Type: SASS Component File
  * Author: Chris Humboldt
 **/
+
+@import "../../bower_components/blueplate/build/sass/import";
+@import "component/modal";
+@import "component/overlay";
+@import "css/execute";

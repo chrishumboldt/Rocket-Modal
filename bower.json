@@ -1,0 +1,28 @@
+{
+   "name": "modalplate",
+   "homepage": "https://github.com/chrishumboldt/Modalplate",
+   "authors": [
+      "Chris Humboldt <chrismodem@gmail.com>"
+   ],
+   "description": "A modal component.",
+   "main": ["css/modalplate.min.css", "js/modalplate.min.js"],
+   "keywords": [
+      "Webplate",
+      "Component",
+      "Modal",
+      "Javascript",
+      "CSS"
+   ],
+   "license": "Apache-2.0",
+   "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "bower.json",
+      "index.html"
+   ],
+	"devDependencies": {
+		"blueplate": "^2.0.0",
+		"webplate-demo": "^1.0.0"
+	}
+}
