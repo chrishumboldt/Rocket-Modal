@@ -58,7 +58,7 @@ If you want to open a modal that has existing HTML, then link to the modal. **No
 
 ```html
 <a href id="modal-link-2">Open Linked Modal</a>
-// The modal
+
 <div id="modal-2" class="modalplate">
 	<div class="modalplate-heading">
 		<h6>The Linked Modal Heading</h6>
@@ -67,7 +67,7 @@ If you want to open a modal that has existing HTML, then link to the modal. **No
 		This is the modal body.
 	</div>
 </div>
-// Execute
+
 <script>
 document.getElementById('modal-link-2').onclick = function(event) {
 	modalplate.init({
