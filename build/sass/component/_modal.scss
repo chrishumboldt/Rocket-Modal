@@ -13,12 +13,14 @@
 @mixin modal() {
 	.modalplate {
 		@include display(block);
-		@include position(fixed, top 0 left 0 margin-left -0px);
+		@include position(fixed, left 0 margin-left -0px);
 		@include size(100%, 100%);
 		@include background-colour($white);
 		@include overflow(scroll, vertical);
 		@include level(1001);
 		@include visibility(hidden);
+		@include opacity(0);
+		@include animate(all, 0.4s);
 		@include drop-shadow(fade-out($black, 0.95), 6px, 1px);
 		@include breakpoint(large) {
 			@include position-set(left 50%);
@@ -86,7 +88,6 @@
 	.modalplate._appear-scale {
 		top: 0;
 		@include opacity(0);
-		@include animate(all, 0.4s);
 	}
 	.modalplate._appear-scale {
 		@include animate(all, 0.2s);
@@ -95,22 +96,19 @@
 	// Sliding
 	.modalplate._slide-from-top {
 		top: -120%;
-		@include animate(all, 0.4s);
 	}
 	.modalplate._slide-from-bottom {
 		top: 120%;
-		@include animate(all, 0.4s);
 	}
 	.modalplate._slide-from-left,
 	.modalplate._slide-from-right {
 		top: 0;
 		left: -120%;
 		margin-left: 0;
-		@include animate(all, 0.4s);
+		@include animate(all);
 	}
 	.modalplate._slide-from-right {
 		left: 120%;
-		@include animate(all, 0.4s);
 	}
 }
 
@@ -119,6 +117,7 @@
 	.modalplate-reveal .modalplate._reveal {
 		top: 0;
 		visibility: visible;
+		@include opacity(1);
 	}
 	// Appear
 	.modalplate-reveal .modalplate._reveal._appear,

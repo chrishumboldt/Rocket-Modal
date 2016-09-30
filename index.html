@@ -52,8 +52,7 @@ document.getElementById('example').onclick = function(event) {
 };
 &lt;/script&gt;
 </pre>
-			<br>
-			<p>If you want to open a modal that has existing HTML then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
+			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
 <pre class="prettyprint linenums">
 &lt;a href id="example-2"&gt;Open Linked Modal&lt;/a&gt;
 
@@ -111,7 +110,6 @@ document.getElementById('example-2').onclick = function(event) {
 		modalplate.init({
 			heading: 'The New Modal Heading',
 			body: 'The modal body goes here.',
-			revealLarge: 'appear',
 			parseEvent: event
 		});
 	};
@@ -119,7 +117,6 @@ document.getElementById('example-2').onclick = function(event) {
 		modalplate.init({
 			targetModal: '#modal-linked',
 			heading: 'The Linked Modal Heading',
-			revealLarge: 'appear',
 			parseEvent: event
 		});
 	};

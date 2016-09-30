@@ -70,8 +70,8 @@ var modalplate = function () {
 			heading: userOptions.heading || defaults.heading,
 			onDone: (typeof userOptions.onDone === 'function') ? userOptions.onDone : defaults.onDone,
 			parseEvent: userOptions.parseEvent || defaults.parseEvent,
-			reveal: (userOptions.reveal && reveals.indexOf(userOptions.reveal) > -1) ? userOptions.reveal : defaults.reveal,
-			revealLarge: userOptions.revealLarge || defaults.revealLarge,
+			reveal: (userOptions.reveal && reveals.indexOf('_' + userOptions.reveal) > -1) ? userOptions.reveal : defaults.reveal,
+			revealLarge: (userOptions.revealLarge && reveals.indexOf('_' + userOptions.revealLarge) > -1) ? userOptions.revealLarge : defaults.revealLarge,
 			targetModal: userOptions.targetModal || defaults.targetModal,
 			trigger: userOptions.trigger || defaults.trigger
 		};
