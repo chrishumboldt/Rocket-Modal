@@ -85,26 +85,6 @@ document.getElementById('modal-link-2').onclick = function(event) {
 </script>
 ```
 
-## Advanced Example
-See an advanced example below with options as per the above.
-
-```html
-<a href id="example">Open Modal</a>
-<script>
-document.getElementById('modal-link').onclick = function(event) {
-   modalplate.init({
-      heading: 'Advanced Modal',
-      body: 'Here is the body text.',
-      close: '<i class="icon-close"></i>',
-      breakpoint: 320,
-      reveal: 'slide-from-right',
-      revealLarge: 'slide-from-top',
-      parseEvent: event
-   });
-};
-</script>
-```
-
 ## On Done
 You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. The function returns the modal element. See an example below.
 
@@ -119,6 +99,29 @@ document.getElementById('modal-link').onclick = function (event) {
 		}
 	});
 };
+```
+
+## Advanced Example
+See an advanced example below with options as per the above.
+
+```html
+<a href id="example">Open Modal</a>
+<script>
+document.getElementById('modal-link').onclick = function(event) {
+   modalplate.init({
+      heading: 'Advanced Modal',
+      body: 'Here is the body text.',
+      close: '<i class="icon-close"></i>',
+      breakpoint: 320,
+      reveal: 'slide-from-right',
+      revealLarge: 'slide-from-top',
+      parseEvent: event,
+      onDone: function (thisModal) {
+         console.log('Modal Loaded!');
+      }
+   });
+};
+</script>
 ```
 
 ## Author
