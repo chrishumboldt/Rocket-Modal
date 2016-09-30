@@ -45,7 +45,6 @@ breakpoint | 700 | | Set the breakpoint of the modal (in pixels) to change from 
 classAdd | false | | Set a class to the containing modal.
 close | close | | Set the text or inner HTML of the close link.
 heading | false | | You can make the heading whatever you would like.
-overlay | true | true, false | Set whether or not you want the overlay to display on modal open.
 onDone | false | | Set a function that will execute once the modal is either created or the link is triggered.
 parseEvent | false | true, false | Parse the event of a click to prevent the default link behavior.
 reveal | slide-from-top | appear, appear-scale, slide-from-bottom, slide-from-left, slide-from-right, slide-from-top | Set the reveal animation.
