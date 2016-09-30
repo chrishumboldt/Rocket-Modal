@@ -41,9 +41,9 @@ bower install modalplate
 			<h4>Basic Example</h4>
 			<p>See a basic example of how to use the component.</p>
 <pre class="prettyprint linenums">
-&lt;a href id="example"&gt;Open New Modal&lt;/a&gt;
+&lt;a href id="modal-link-1"&gt;Open New Modal&lt;/a&gt;
 &lt;script&gt;
-document.getElementById('example').onclick = function(event) {
+document.getElementById('modal-link-1').onclick = function(event) {
    modalplate.init({
       heading: 'Example Modal',
       body: 'Here is the body text.',
@@ -54,9 +54,9 @@ document.getElementById('example').onclick = function(event) {
 </pre>
 			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
 <pre class="prettyprint linenums">
-&lt;a href id="example-2"&gt;Open Linked Modal&lt;/a&gt;
+&lt;a href id="modal-link-2"&gt;Open Linked Modal&lt;/a&gt;
 
-&lt;div id="modal-linked" class="modalplate"&gt;
+&lt;div id="modal-2" class="modalplate"&gt;
     &lt;div class="modalplate-heading"&gt;
         &lt;h6&gt;The Linked Modal Heading&lt;/h6&gt;
     &lt;/div&gt;
@@ -66,9 +66,9 @@ document.getElementById('example').onclick = function(event) {
 &lt;/div&gt;
 
 &lt;script&gt;
-document.getElementById('example-2').onclick = function(event) {
+document.getElementById('modal-link-2').onclick = function(event) {
     modalplate.init({
-        targetModal: '#modal-1',
+        targetModal: '#modal-2',
         parseEvent: event
     });
 };
@@ -76,8 +76,8 @@ document.getElementById('example-2').onclick = function(event) {
 </pre>
 			<br>
 			<h4>Working Example</h4>
-			<a href id="example" class="link">Open New Modal</a><br>
-			<a href id="example-2" class="link">Open Linked Modal</a>
+			<a href id="modal-link" class="link">Open New Modal</a><br>
+			<a href id="modal-link-2" class="link">Open Linked Modal</a>
 			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Modalplate" class="link">https://github.com/chrishumboldt/Modalplate</a></p>
@@ -93,9 +93,9 @@ document.getElementById('example-2').onclick = function(event) {
 			</div>
 		</div></div></footer>
 
-		<div id="modal-linked" class="modalplate">
+		<div id="modal-2" class="modalplate">
 			<div class="modalplate-heading">
-				<h6>The Linked Modal Heading (will be replaced)</h6>
+				<h6>The Linked Modal Heading</h6>
 			</div>
 			<div class="modalplate-body">
 				This is the modal body.
@@ -106,17 +106,16 @@ document.getElementById('example-2').onclick = function(event) {
 	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
 	<script src="js/modalplate.min.js"></script>
 	<script>
-	document.getElementById('example').onclick = function(event) {
+	document.getElementById('modal-link').onclick = function(event) {
 		modalplate.init({
 			heading: 'The New Modal Heading',
 			body: 'The modal body goes here.',
 			parseEvent: event
 		});
 	};
-	document.getElementById('example-2').onclick = function (event) {
+	document.getElementById('modal-link-2').onclick = function (event) {
 		modalplate.init({
-			targetModal: '#modal-linked',
-			heading: 'The Linked Modal Heading',
+			targetModal: '#modal-2',
 			parseEvent: event
 		});
 	};

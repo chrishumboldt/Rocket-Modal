@@ -146,6 +146,9 @@ var modalplate = function () {
 				modalClose();
 				web.classAdd(web.element.html, 'modalplate-reveal');
 				web.classAdd(thisModal, '_reveal');
+				if (typeof options.onDone === 'function') {
+					options.onDone(thisModal);
+				}
 			}
 		}, 50);
 	};
