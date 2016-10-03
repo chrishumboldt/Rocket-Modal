@@ -56,8 +56,8 @@ trigger | always | always, small, large | Set when you want the modal trigger to
 You can also set or overwrite the above options globally by altering the Modalplate defaults. To do so reference the defaults object property. For example:
 
 ```js
-modalplate.defaults.reveal = 'appear-scale';
-modalplate.defaults.close = 'Exit';
+Modalplate.defaults.reveal = 'appear-scale';
+Modalplate.defaults.close = 'Exit';
 ```
 
 ## Modal Link
