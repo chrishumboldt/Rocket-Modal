@@ -26,7 +26,7 @@ See a basic example of how to use the component.
 <a href id="modal-link-1">Open New Modal</a>
 <script>
 document.getElementById('modal-link-1').onclick = function(event) {
-	modalplate.init({
+	Modalplate.init({
 		heading: 'Example Modal',
 		body: 'Here is the body text.',
 		parseEvent: event
@@ -77,7 +77,7 @@ If you want to open a modal that has existing HTML, then link to the modal. **No
 
 <script>
 document.getElementById('modal-link-2').onclick = function(event) {
-	modalplate.init({
+	Modalplate.init({
 		targetModal: '#modal-2',
 		parseEvent: event
 	});
@@ -90,7 +90,7 @@ You can declare a function that will trigger once the modal is created or once t
 
 ```js
 document.getElementById('modal-link').onclick = function (event) {
-	modalplate.init({
+	Modalplate.init({
 		heading: 'Text Heading',
 		body: 'This is a simple test',
 		parseEvent: event,
@@ -108,7 +108,7 @@ See an advanced example below with options as per the above.
 <a href id="example">Open Modal</a>
 <script>
 document.getElementById('modal-link').onclick = function(event) {
-   modalplate.init({
+   Modalplate.init({
       heading: 'Advanced Modal',
       body: 'Here is the body text.',
       close: '<i class="icon-close"></i>',
