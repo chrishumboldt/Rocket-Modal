@@ -5,7 +5,7 @@
 **/
 
 // Component
-var modalplate = function () {
+var Modalplate = function () {
 	// Variables
 	var defaults = {
 		body: false,
@@ -261,4 +261,4 @@ var modalplate = function () {
 	};
 }();
 
-modalplate.setup();
+Modalplate.setup();

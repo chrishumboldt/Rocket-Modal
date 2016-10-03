@@ -44,7 +44,7 @@ bower install modalplate
 &lt;a href id="modal-link-1"&gt;Open New Modal&lt;/a&gt;
 &lt;script&gt;
 document.getElementById('modal-link-1').onclick = function(event) {
-   modalplate.init({
+   Modalplate.init({
       heading: 'Example Modal',
       body: 'Here is the body text.',
       parseEvent: event
@@ -67,7 +67,7 @@ document.getElementById('modal-link-1').onclick = function(event) {
 
 &lt;script&gt;
 document.getElementById('modal-link-2').onclick = function(event) {
-    modalplate.init({
+    Modalplate.init({
         targetModal: '#modal-2',
         parseEvent: event
     });
@@ -107,14 +107,14 @@ document.getElementById('modal-link-2').onclick = function(event) {
 	<script src="js/modalplate.min.js"></script>
 	<script>
 	document.getElementById('modal-link').onclick = function(event) {
-		modalplate.init({
+		Modalplate.init({
 			heading: 'The New Modal Heading',
 			body: 'The modal body goes here.',
 			parseEvent: event
 		});
 	};
 	document.getElementById('modal-link-2').onclick = function (event) {
-		modalplate.init({
+		Modalplate.init({
 			targetModal: '#modal-2',
 			parseEvent: event
 		});
