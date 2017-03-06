@@ -1,0 +1,65 @@
+/*
+Author: Chris Humboldt
+*/
+
+// Reveal animations
+@mixin modal-reveal-animations() {
+	// Appear
+	.rocket-modal._appear,
+	.rocket-modal._appear-scale {
+		top: 0;
+		@include opacity(0);
+	}
+	.rocket-modal._appear-scale {
+		@include animate(all, 0.2s);
+		@include transform-scale-3d(0, 0);
+	}
+	// Sliding
+	.rocket-modal._slide-from-top {
+		top: -120%;
+	}
+	.rocket-modal._slide-from-bottom {
+		top: 120%;
+	}
+	.rocket-modal._slide-from-left,
+	.rocket-modal._slide-from-right {
+		top: 0;
+		left: -120%;
+		margin-left: 0;
+		@include animate(all);
+	}
+	.rocket-modal._slide-from-right {
+		left: 120%;
+	}
+}
+
+// Reveal modal
+@mixin modal-reveal() {
+	.rmo-reveal .rocket-modal._reveal {
+		top: 0;
+		visibility: visible;
+		@include opacity(1);
+	}
+	// Appear
+	.rmo-reveal .rocket-modal._reveal._appear,
+	.rmo-reveal .rocket-modal._reveal._appear-scale {
+		visibility: visible;
+		@include opacity(1);
+	}
+	.rmo-reveal .rocket-modal._reveal._appear-scale {
+		visibility: visible;
+		@include transform-scale-3d(1, 1);
+	}
+	// Sliding
+	.rmo-reveal .rocket-modal._reveal._slide-from-left,
+	.rmo-reveal .rocket-modal._reveal._slide-from-right {
+		left: 0;
+		visibility: visible;
+
+		// Respond
+		@include breakpoint(large) {
+			left: 50%;
+			margin-left: -(40.625em / 2);
+		}
+	}
+}

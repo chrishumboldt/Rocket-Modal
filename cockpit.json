@@ -1,0 +1,11 @@
+{
+   "build": [{
+      "name": "modal",
+      "css": [
+         "~/modal.scss"
+      ],
+      "js": [
+         "~/modal.js"
+      ]
+   }]
+}

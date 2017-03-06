@@ -5,56 +5,61 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Modalplate Component</title>
-	<link href="bower_components/webplate-demo/css/demo.min.css" rel="stylesheet" type="text/css">
-	<link href="css/modalplate.min.css" rel="stylesheet" type="text/css">
+	<title>Rocket Modal Module</title>
+
+	<link href="node_modules/rocket-demo/css/demo.min.css" rel="stylesheet" type="text/css">
+	<link href="css/modal.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-	<div id="web-demo-message">
-		You need to run "bower install" and include the neccessary demo files in order to view this file.
+	<div id="rocket-demo-message">
+		You need to run "npm install" and include the neccessary demo files in order to view this file.
 	</div>
 
-	<div id="web-demo" style="display:none;">
+	<div id="rocket-demo" style="display:none;">
 		<div class="heading"><div class="container">
-			<h2>Modalplate Component</h2>
+			<h2>Rocket Modal Module</h2>
 		</div></div>
 
 		<div class="container">
-			<h4>Getting Started</h4>
-			<p>You can either download a copy of the source files or install Modalplate via Bower.</p>
+         <h4>Getting Started</h4>
+         <p>Install via NPM.</p>
 <pre class="prettyprint linenums">
-bower install modalplate
+npm install rocket-modal
 </pre>
-			<p>Start by including the necessary files.</p>
+
+         <p class="note">Note that this module has a dependency <a href="https://github.com/chrishumboldt/Rocket-Tools" class="link" target="_blank">Rocket Tools (21kb)</a> which will automatically be installed as well.</p>
+         <p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/modalplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;node_modules/rocket-modal/css/modal.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 &lt;body&gt;
     /* Your content goes here */
-    &lt;script src=&quot;js/modalplate.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;>&lt;/script&gt;
+    &lt;script src=&quot;node_modules/rocket-modal/js/modal.min.js&quot;>&lt;/script&gt;
 &lt;/body&gt;
 </pre>
 			<br>
 			<h4>Basic Example</h4>
 			<p>See a basic example of how to use the component.</p>
 <pre class="prettyprint linenums">
-&lt;a href id="modal-link-1"&gt;Open New Modal&lt;/a&gt;
+&lt;a id="modal-link-1" href&gt;Open New Modal&lt;/a&gt;
+
 &lt;script&gt;
-document.getElementById('modal-link-1').onclick = function(event) {
-   Modalplate.init({
+document.getElementById('modal-link-1').addEventListener('click', event => {
+   Rocket.modal({
       heading: 'Example Modal',
       body: 'Here is the body text.',
       parseEvent: event
    });
-};
+});
 &lt;/script&gt;
 </pre>
 			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
 <pre class="prettyprint linenums">
-&lt;a href id="modal-link-2"&gt;Open Linked Modal&lt;/a&gt;
+&lt;a id="modal-link-2" href&gt;Open Linked Modal&lt;/a&gt;
 
 &lt;div id="modal-2" class="modalplate"&gt;
     &lt;div class="modalplate-heading"&gt;
@@ -66,18 +71,18 @@ document.getElementById('modal-link-1').onclick = function(event) {
 &lt;/div&gt;
 
 &lt;script&gt;
-document.getElementById('modal-link-2').onclick = function(event) {
-    Modalplate.init({
-        targetModal: '#modal-2',
-        parseEvent: event
-    });
-};
+document.getElementById('modal-link-2').addEventListener('click', event => {
+   Rocket.modal({
+      target: '#modal-2',
+      parseEvent: event
+   });
+});
 &lt;/script&gt;
 </pre>
 			<br>
 			<h4>Working Example</h4>
-			<a href id="modal-link" class="link">Open New Modal</a><br>
-			<a href id="modal-link-2" class="link">Open Linked Modal</a>
+			<a id="modal-link-1" class="link" href>Open New Modal</a><br>
+			<a id="modal-link-2" href="#modal-2" class="link">Open Linked Modal</a>
 			<br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Modalplate" class="link">https://github.com/chrishumboldt/Modalplate</a></p>
@@ -93,32 +98,38 @@ document.getElementById('modal-link-2').onclick = function(event) {
 			</div>
 		</div></div></footer>
 
-		<div id="modal-2" class="modalplate">
-			<div class="modalplate-heading">
+		<div id="modal-2" class="rocket-modal">
+			<div class="rmo-heading">
 				<h6>The Linked Modal Heading</h6>
 			</div>
-			<div class="modalplate-body">
+			<div class="rmo-body">
 				This is the modal body.
 			</div>
 		</div>
 	</div>
 
-	<script src="bower_components/webplate-demo/js/demo.min.js"></script>
-	<script src="js/modalplate.min.js"></script>
+	<script src="node_modules/rocket-demo/js/demo.min.js"></script>
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
+	<script src="js/modal.min.js"></script>
 	<script>
-	document.getElementById('modal-link').onclick = function(event) {
-		Modalplate.init({
-			heading: 'The New Modal Heading',
-			body: 'The modal body goes here.',
-			parseEvent: event
-		});
-	};
-	document.getElementById('modal-link-2').onclick = function (event) {
-		Modalplate.init({
-			targetModal: '#modal-2',
-			parseEvent: event
-		});
-	};
+   Rocket.event.add(Rocket.dom.element('#modal-link-1'), 'click', function (event) {
+      let modal = Rocket.modal({
+         heading: 'Example Modal',
+         body: 'Here is the body text.',
+         onTrue: function () {
+            modal.close();
+            alert('The ok button works!');
+         },
+         parseEvent: event
+      });
+   });
+
+   Rocket.event.add(Rocket.dom.element('#modal-link-2'), 'click', function (event) {
+      Rocket.modal({
+         target: '#modal-2',
+         parseEvent: event
+      });
+   });
 	</script>
 
 </body>
