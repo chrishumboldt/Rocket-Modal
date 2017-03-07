@@ -136,8 +136,8 @@ document.getElementById('example').addEventListener('click', event => {
       buttons: true,
       close: '<i class="icon-close"></i>',
       breakpoint: 320,
-      reveal: 'slide-from-right',
-      revealLarge: 'slide-from-top',
+      reveal: 'slidefromright',
+      revealLarge: 'slidefromtop',
       parseEvent: event,
       onDone: thisModal => {
          console.log('Modal Loaded!');
