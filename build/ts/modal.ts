@@ -73,6 +73,15 @@ module RockMod_Modal {
    }
    const modal = {
       close: (callback = null) => {
+         /*
+         Catch and make sure a Rocket message is not open. This is to prevent
+         the two modules from conflicting with each other. It can get kinda tricky.
+         */
+         if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+            return;
+         }
+
+         // Continue
          if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
             Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
 
@@ -193,6 +202,9 @@ module RockMod_Modal {
       }
    };
 
+   function setup() {
+      Rocket.event.add(Rocket.dom.element('#rocket-overlay'), 'click', modal.close);
+   }
 
    // Initialiser
    export function init(uOptions: ModalOptions) {
@@ -240,6 +252,8 @@ module RockMod_Modal {
          return modal.new(options);
       }
    }
+
+   setup();
 }
 
 // Bind to Rocket
