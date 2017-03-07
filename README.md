@@ -114,8 +114,9 @@ document.getElementById('modal-link').addEventListener('click', event => {
 		heading: 'Text Heading',
 		body: 'This is a simple test',
 		parseEvent: event,
-		onDone: () => {
-			console.log('All done');
+		onDone: thisModal => {
+			console.log('All done! Here is the modal element:');
+         console.log(thisModal);
 		}
 	});
 });
@@ -137,7 +138,7 @@ document.getElementById('example').addEventListener('click', event => {
       reveal: 'slide-from-right',
       revealLarge: 'slide-from-top',
       parseEvent: event,
-      onDone: () => {
+      onDone: thisModal => {
          console.log('Modal Loaded!');
       }
    });

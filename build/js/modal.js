@@ -127,6 +127,9 @@ var RockMod_Modal;
                     Rocket.overlay.show();
                     Rocket.classes.add(Rocket.dom.html, 'rmo-reveal');
                     Rocket.classes.add(options.element.modal, '_current');
+                    if (Rocket.is.function(options.onDone)) {
+                        options.onDone(options.element.modal);
+                    }
                 });
             }, 50);
         },
