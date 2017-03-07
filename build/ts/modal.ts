@@ -77,7 +77,9 @@ module RockMod_Modal {
          Catch and make sure a Rocket message is not open. This is to prevent
          the two modules from conflicting with each other. It can get kinda tricky.
          */
-         if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) { return; }
+         if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+            return;
+         }
 
          // Continue
          if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {

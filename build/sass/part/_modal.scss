@@ -130,7 +130,7 @@ Author: Chris Humboldt
       }
 
       // There is a rocket message module instance
-      html.rm-reveal {
+      html.rm-reveal & {
          @include level(950);
       }
 	}
