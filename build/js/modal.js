@@ -59,6 +59,9 @@ var RockMod_Modal;
     var modal = {
         close: function (callback) {
             if (callback === void 0) { callback = null; }
+            if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+                return;
+            }
             if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
                 Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
                 var currentModal_1 = Rocket.dom.element('.rocket-modal._current');
@@ -154,6 +157,9 @@ var RockMod_Modal;
             modal.reveal(options);
         }
     };
+    function setup() {
+        Rocket.event.add(Rocket.dom.element('#rocket-overlay'), 'click', modal.close);
+    }
     function init(uOptions) {
         if (!Rocket.is.object(uOptions)) {
             return;
@@ -197,5 +203,6 @@ var RockMod_Modal;
         }
     }
     RockMod_Modal.init = init;
+    setup();
 })(RockMod_Modal || (RockMod_Modal = {}));
 Rocket.modal = RockMod_Modal.init;
