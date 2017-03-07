@@ -1,0 +1,139 @@
+/*
+Author: Chris Humboldt
+*/
+
+// Table of contents
+// Modal
+// Reveal animations
+// Show modal
+
+// Modal
+@mixin modal() {
+	.rocket-modal {
+		@include display(block);
+		@include position(fixed, left 0 margin-left -0px);
+		@include size(100%, 100%);
+		@include background-colour($white);
+		@include overflow(scroll, vertical);
+		@include level(1001);
+		@include visibility(hidden);
+		@include opacity(0);
+		@include animate(all, 0.4s);
+		@include drop-shadow(fade-out($black, 0.95), 6px, 1px);
+
+		@include breakpoint(large) {
+			@include position-set(left 50%);
+			@include margin-left(-(40.625em / 2));
+			@include width-max(40.625em);
+			@include height(auto, 100%);
+		}
+
+		// Close
+		.rmo-close {
+			@include position(absolute, top 0px right 16px);
+			@include height(44px);
+         @include line-height(44px);
+			@include text-align(center);
+			@include text-colour($grey-blue-light);
+			@include text-decoration(none);
+			@include text-size($size-minor);
+			@include animate(color);
+			.rocket-no-touch &:hover {
+				@include text-colour($grey-blue-dark);
+				@include cursor(pointer);
+			}
+		}
+
+		// Content
+		.rmo-heading,
+		.rmo-body,
+      .rmo-buttons {
+			@include padding-horizontal($space-base);
+			@include breakpoint(large) {
+				@include padding-horizontal($space-slight);
+			}
+		}
+
+		// Heading
+		.rmo-heading {
+         @include padding-vertical($space-base);
+         @include border-bottom($grey-blue-light);
+			@include breakpoint(large) {
+			}
+			h6 {
+				@include spacing-no();
+				@include text-colour($grey-blue-x-dark);
+				@include text-size($size-slight);
+			}
+		}
+
+		// Body
+		.rmo-body {
+			@include padding-vertical($space-slight);
+			@include text-colour($grey-blue-dark);
+			@include text-line-height(22px);
+			@include text-size($size-base);
+
+			p:last-child {
+				@include spacing-no();
+			}
+		}
+
+      // Buttons
+      .rmo-buttons {
+         @include padding-vertical($space-base - 10px);
+         @include text-align(center);
+         @include border-top($grey-blue-light);
+
+         .btn-false,
+   		.btn-true {
+   			@include position(relative);
+   			@include display(inline-block);
+            @include margin-horizontal(4px);
+   			@include padding-no();
+            @include padding-horizontal(24px);
+   			@include height(44px);
+            @include width-min(100px);
+   			@include text-align(center);
+   			@include text-colour($grey-blue);
+   			@include text-decoration(none);
+   			@include text-line-height(44px);
+   			@include text-size(14px);
+   			@include vertical-align(middle);
+   			@include background-colour(transparent);
+   			@include border($grey-blue, 1px);
+   			@include border-radius();
+            @include animate(all);
+         	outline: none;
+         	-webkit-appearance: none;
+
+   			&:visited {
+   				@include text-colour($grey-blue);
+   			}
+   			.rocket-no-touch &:hover {
+   				@include cursor(pointer);
+   				@include text-colour($white);
+   				@include background-colour($grey-blue);
+   			}
+   			&:active,
+   			&:active:hover {
+   				@include transform-scale-3d(0.9, 0.9, 0.9);
+   			}
+
+   		}
+   		.btn-true {
+   			@include text-colour($white);
+            @include border-no;
+            @include background-colour($blue);
+   			&:visited {
+   				@include text-colour($white);
+   			}
+   			.rocket-no-touch &:hover {
+   				@include background-colour($blue);
+   			}
+   		}
+      }
+	}
+	@include modal-reveal-animations();
+	@include modal-reveal();
+}

@@ -1,21 +1,33 @@
-# Modalplate
-A Javascript modal component.
+# Rocket Modal
+A Javascript modal module.
+
+* [Getting Started](#getting-started)
+* [Basic Example](#basic-example)
+* [Javascript Options](#javascript-options)
+   * [Defaults](#defaults)
+* [Modal Target](#modal-target)
+* [On Done](#on-done)
+* [Advanced Example](#advanced-example)
+* [Modalplate Deprecated](#modalplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the source files or install Modalplate via Bower.
+Install via NPM.
 
 ```
-bower install modalplate
+npm install rocket-modal
 ```
+
+**NOTE** that this module has a dependency [Rocket Tools (21kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
 
 Start by including the necessary files.
 
 ```html
 <head>
-   <link href="css/modalplate.min.css" rel="stylesheet" type="text/css">
+   <link href="node_modules/rocket-modal/css/modal.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-   <script src="js/modalplate.min.js"></script>
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
+   <script src="node_modules/rocket-modal/js/modal.min.js"></script>
 </body>
 ```
 
@@ -23,15 +35,16 @@ Start by including the necessary files.
 See a basic example of how to use the component.
 
 ```html
-<a href id="modal-link-1">Open New Modal</a>
+<a id="modal-link-1" href>Open New Modal</a>
+
 <script>
-document.getElementById('modal-link-1').onclick = function(event) {
-	Modalplate.init({
-		heading: 'Example Modal',
-		body: 'Here is the body text.',
-		parseEvent: event
-	});
-};
+document.getElementById('modal-link-1').addEventListener('click', event => {
+   Rocket.modal({
+      heading: 'Example Modal',
+      body: 'Here is the body text.',
+      parseEvent: event
+   });
+});
 </script>
 ```
 
@@ -40,89 +53,105 @@ See the different options you have available on component call.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
-body | false | | You can make the body whatever you would like to display.
-breakpoint | 700 | | Set the breakpoint of the modal (in pixels) to change from a fullscreen modal to a standard content modal.
-classAdd | false | | Set a class to the containing modal.
-close | close | | Set the text or inner HTML of the close link.
-heading | false | | You can make the heading whatever you would like.
-onDone | false | | Set a function that will execute once the modal is either created or the link is triggered.
-parseEvent | false | true, false | Parse the event of a click to prevent the default link behavior.
-reveal | slide-from-top | appear, appear-scale, slide-from-bottom, slide-from-left, slide-from-right, slide-from-top | Set the reveal animation.
-revealLarge | false | appear, appear-scale, slide-from-bottom, slide-from-left, slide-from-right, slide-from-top | Set the reveal animation after the breakpoint has been reached. **NOTE** that false means the already existing reveal animation will be used.
-targetModal | false | | Instead of creating a new modal, you can open an existing modal with a particular selector.
-trigger | always | always, small, large | Set when you want the modal trigger to fire. Small is below the breakpoint, large above the breakpoint and always is always.
+`body` | | | You can make the body whatever you would like to display.
+`breakpoint` | `700` | | Set the breakpoint of the modal (in pixels) to change from a fullscreen modal to a standard content modal.
+`buttons` | `true` | `true` `false` | Display the modal buttons.<br>**NOTE** that the true button will only display if the `onTrue` argument is set.
+`buttonFalse` | `Cancel` | | Set the false button text.
+`buttonTrue` | `Ok` | | Set the true button text.
+`classAdd` | | | Set a class to the containing modal.
+`close` | `close` | | Set the text or inner HTML of the close link.
+`heading` | | | You can make the heading whatever you would like.
+`onDone` | | | Set a function that will execute once the modal is either created or the link is triggered.
+`onTrue` | | | Set a function that will execute when the true button is clicked.
+`parseEvent` | | | Parse the event of a click to prevent the default link behavior.
+`reveal` | `slidefromtop` | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation.
+`revealLarge` | | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
+`target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
 
-## Defaults
-You can also set or overwrite the above options globally by altering the Modalplate defaults. To do so reference the defaults object property. For example:
+#### Defaults
+You can also set or overwrite the above options globally by altering the Rocket defaults. To do so reference the defaults object property. For example:
 
 ```js
-Modalplate.defaults.reveal = 'appear-scale';
-Modalplate.defaults.close = 'Exit';
+Rocket.defaults.modal.reveal = 'appearscale';
+Rocket.defaults.modal.close = 'Exit';
+Rocket.defaults.modal.buttonTrue = 'Yup';
 ```
 
-## Modal Link
-If you want to open a modal that has existing HTML, then link to the modal. **Note** that a predefined HTML structure is required.
+## Modal Target
+If you want to open a modal that has existing HTML, then target that modal. **Note** that a predefined HTML structure is required.
 
 ```html
-<a href id="modal-link-2">Open Linked Modal</a>
+<!-- The link -->
+<a id="modal-link-2" href>Open Target Modal</a>
 
-<div id="modal-2" class="modalplate">
-	<div class="modalplate-heading">
-		<h6>The Linked Modal Heading</h6>
-	</div>
-	<div class="modalplate-body">
-		This is the modal body.
-	</div>
+<!-- The modal -->
+<div id="modal-2" class="rocket-modal">
+   <div class="rmo-heading">
+      <h6>The Linked Modal Heading</h6>
+   </div>
+   <div class="rmo-body">
+      This is the modal body.
+   </div>
 </div>
 
 <script>
-document.getElementById('modal-link-2').onclick = function(event) {
-	Modalplate.init({
-		targetModal: '#modal-2',
-		parseEvent: event
-	});
-};
+// Trigger the modal
+document.getElementById('modal-link-2').addEventListener('click', event => {
+   Rocket.modal({
+      target: '#modal-2',
+      parseEvent: event
+   });
+});
 </script>
 ```
 
 ## On Done
-You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. The function returns the modal element. See an example below.
+You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. See an example below.
 
 ```js
-document.getElementById('modal-link').onclick = function (event) {
-	Modalplate.init({
-		heading: 'Text Heading',
-		body: 'This is a simple test',
-		parseEvent: event,
-		onDone: function (thisModal) {
-			console.log(thisModal);
-		}
-	});
-};
+document.getElementById('modal-link').addEventListener('click', event => {
+   Rocket.modal({
+      heading: 'Text Heading',
+      body: 'This is a simple test',
+      parseEvent: event,
+      onDone: thisModal => {
+         console.log('All done! Here is the modal element:');
+         console.log(thisModal);
+      }
+   });
+});
 ```
 
 ## Advanced Example
 See an advanced example below with options as per the above.
 
 ```html
-<a href id="example">Open Modal</a>
+<a id="example" href>Open Modal</a>
+
 <script>
-document.getElementById('modal-link').onclick = function(event) {
-   Modalplate.init({
+document.getElementById('example').addEventListener('click', event => {
+   Rocket.modal({
       heading: 'Advanced Modal',
       body: 'Here is the body text.',
+      buttons: true,
       close: '<i class="icon-close"></i>',
       breakpoint: 320,
-      reveal: 'slide-from-right',
-      revealLarge: 'slide-from-top',
+      reveal: 'slidefromright',
+      revealLarge: 'slidefromtop',
       parseEvent: event,
-      onDone: function (thisModal) {
+      onDone: thisModal => {
          console.log('Modal Loaded!');
+      },
+      onTrue: () => {
+         console.log('The true button was clicked!');
       }
    });
-};
+});
 </script>
 ```
+
+## Modalplate Deprecated
+The original library, Modalplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Modalplate will be maintained only with bug fixes under the **modalplate** branch.
 
 ## Author
 Created and maintained by Chris Humboldt<br>
@@ -131,13 +160,13 @@ Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
-Copyright 2016 Webplate Project
+Copyright 2017 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
