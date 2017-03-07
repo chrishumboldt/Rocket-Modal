@@ -155,6 +155,10 @@ var RockMod_Modal;
             }
             ;
             modal.reveal(options);
+            return {
+                close: modal.close,
+                modal: options.element.modal
+            };
         }
     };
     function setup() {
