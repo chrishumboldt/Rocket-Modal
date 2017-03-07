@@ -81,8 +81,10 @@ Rocket.defaults.modal.buttonTrue = 'Yup';
 If you want to open a modal that has existing HTML, then target that modal. **Note** that a predefined HTML structure is required.
 
 ```html
-<a id="modal-link-2" href>Open Linked Modal</a>
+<!-- The link -->
+<a id="modal-link-2" href>Open Target Modal</a>
 
+<!-- The modal -->
 <div id="modal-2" class="rocket-modal">
 	<div class="rmo-heading">
 		<h6>The Linked Modal Heading</h6>
@@ -93,6 +95,7 @@ If you want to open a modal that has existing HTML, then target that modal. **No
 </div>
 
 <script>
+// Trigger the modal
 document.getElementById('modal-link-2').addEventListener('click', event => {
 	Rocket.modal({
 		target: '#modal-2',
