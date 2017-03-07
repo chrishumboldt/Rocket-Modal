@@ -4,7 +4,7 @@ A Javascript modal module.
 * [Getting Started](#getting-started)
 * [Basic Example](#basic-example)
 * [Javascript Options](#javascript-options)
-	* [Defaults](#defaults)
+   * [Defaults](#defaults)
 * [Modal Target](#modal-target)
 * [On Done](#on-done)
 * [Advanced Example](#advanced-example)
@@ -39,11 +39,11 @@ See a basic example of how to use the component.
 
 <script>
 document.getElementById('modal-link-1').addEventListener('click', event => {
-	Rocket.modal({
-		heading: 'Example Modal',
-		body: 'Here is the body text.',
-		parseEvent: event
-	});
+   Rocket.modal({
+      heading: 'Example Modal',
+      body: 'Here is the body text.',
+      parseEvent: event
+   });
 });
 </script>
 ```
@@ -86,21 +86,21 @@ If you want to open a modal that has existing HTML, then target that modal. **No
 
 <!-- The modal -->
 <div id="modal-2" class="rocket-modal">
-	<div class="rmo-heading">
-		<h6>The Linked Modal Heading</h6>
-	</div>
-	<div class="rmo-body">
-		This is the modal body.
-	</div>
+   <div class="rmo-heading">
+      <h6>The Linked Modal Heading</h6>
+   </div>
+   <div class="rmo-body">
+      This is the modal body.
+   </div>
 </div>
 
 <script>
 // Trigger the modal
 document.getElementById('modal-link-2').addEventListener('click', event => {
-	Rocket.modal({
-		target: '#modal-2',
-		parseEvent: event
-	});
+   Rocket.modal({
+      target: '#modal-2',
+      parseEvent: event
+   });
 });
 </script>
 ```
@@ -110,15 +110,15 @@ You can declare a function that will trigger once the modal is created or once t
 
 ```js
 document.getElementById('modal-link').addEventListener('click', event => {
-	Rocket.modal({
-		heading: 'Text Heading',
-		body: 'This is a simple test',
-		parseEvent: event,
-		onDone: thisModal => {
-			console.log('All done! Here is the modal element:');
+   Rocket.modal({
+      heading: 'Text Heading',
+      body: 'This is a simple test',
+      parseEvent: event,
+      onDone: thisModal => {
+         console.log('All done! Here is the modal element:');
          console.log(thisModal);
-		}
-	});
+      }
+   });
 });
 ```
 
@@ -130,7 +130,7 @@ See an advanced example below with options as per the above.
 
 <script>
 document.getElementById('example').addEventListener('click', event => {
-	Rocket.modal({
+   Rocket.modal({
       heading: 'Advanced Modal',
       body: 'Here is the body text.',
       close: '<i class="icon-close"></i>',
@@ -162,7 +162,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
