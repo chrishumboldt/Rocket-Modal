@@ -3,7 +3,7 @@ Author: Chris Humboldt
 */
 
 // Reveal animations
-@mixin modal-reveal-animations() {
+@mixin rocket-modal-reveal-animations() {
 	// Appear
 	.rocket-modal._appear,
 	.rocket-modal._appearscale {
@@ -34,7 +34,7 @@ Author: Chris Humboldt
 }
 
 // Reveal modal
-@mixin modal-reveal() {
+@mixin rocket-modal-reveal() {
 	.rmo-reveal .rocket-modal._reveal {
 		top: 0;
 		visibility: visible;

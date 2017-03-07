@@ -2,13 +2,8 @@
 Author: Chris Humboldt
 */
 
-// Table of contents
 // Modal
-// Reveal animations
-// Show modal
-
-// Modal
-@mixin modal() {
+@mixin rocket-modal() {
 	.rocket-modal {
 		@include display(block);
 		@include position(fixed, left 0 margin-left -0px);
@@ -134,6 +129,6 @@ Author: Chris Humboldt
    		}
       }
 	}
-	@include modal-reveal-animations();
-	@include modal-reveal();
+	@include rocket-modal-reveal-animations();
+	@include rocket-modal-reveal();
 }
