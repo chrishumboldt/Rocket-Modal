@@ -35,7 +35,7 @@ Start by including the necessary files.
 See a basic example of how to use the component.
 
 ```html
-<a href id="modal-link-1">Open New Modal</a>
+<a id="modal-link-1" href>Open New Modal</a>
 
 <script>
 document.getElementById('modal-link-1').addEventListener('click', event => {
