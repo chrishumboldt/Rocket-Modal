@@ -3,12 +3,9 @@
   "version": "4.0.0",
   "description": "A Javascript modal module.",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrishumboldt/Modalplate.git"
+    "url": "git+https://github.com/chrishumboldt/Rocket-Modal.git"
   },
   "keywords": [
     "Rocket",
@@ -21,9 +18,9 @@
   "author": "Chris Humboldt <chrismodem@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/chrishumboldt/Modalplate/issues"
+    "url": "https://github.com/chrishumboldt/Rocket-Modal/issues"
   },
-  "homepage": "https://github.com/chrishumboldt/Modalplate#readme",
+  "homepage": "https://github.com/chrishumboldt/Rocket-Modal#readme",
   "devDependencies": {
     "rocket-demo": "^2.0.1",
     "rocket-propel": "^3.0.3"
