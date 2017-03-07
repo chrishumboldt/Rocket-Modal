@@ -64,8 +64,8 @@ Name | Default | Options | Description
 `onDone` | | | Set a function that will execute once the modal is either created or the link is triggered.
 `onTrue` | | | Set a function that will execute when the true button is clicked.
 `parseEvent` | | | Parse the event of a click to prevent the default link behavior.
-`reveal` | `slide-from-top` | `appear` `appear-scale` `slide-from-bottom`<br>`slide-from-left` `slide-from-right` `slide-from-top` | Set the reveal animation.
-`revealLarge` | | `appear` `appear-scale` `slide-from-bottom`<br>`slide-from-left` `slide-from-right` `slide-from-top` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
+`reveal` | `slide-from-top` | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation.
+`revealLarge` | | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
 `show` | `always` | `always` `small` `large` | Set when you want the modal trigger to fire.<br>Small is below the breakpoint, large above the breakpoint and always is always.
 `target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
 
