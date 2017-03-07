@@ -55,7 +55,7 @@ Name | Default | Options | Description
 ---- | ---- | ---- | ----
 `body` | | | You can make the body whatever you would like to display.
 `breakpoint` | `700` | | Set the breakpoint of the modal (in pixels) to change from a fullscreen modal to a standard content modal.
-`buttons` | `true` | `true` `false` | Display the modal buttons.<br>**NOTE** that the true button will only display if the `onTrue` argument is set.
+`buttons` | `true` | `true` `false` | Display the modal buttons.<br>**NOTE** that the true button will only<br>display if the `onTrue` argument is set.
 `buttonFalse` | `Cancel` | | Set the false button text.
 `buttonTrue` | `Ok` | | Set the true button text.
 `classAdd` | | | Set a class to the containing modal.
@@ -65,7 +65,7 @@ Name | Default | Options | Description
 `onTrue` | | | Set a function that will execute when the true button is clicked.
 `parseEvent` | | | Parse the event of a click to prevent the default link behavior.
 `reveal` | `slide-from-top` | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation.
-`revealLarge` | | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
+`revealLarge` | | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation after the breakpoint.<br>**NOTE** that false means the already existing<br>reveal animation will be used.
 `target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
 
 #### Defaults
