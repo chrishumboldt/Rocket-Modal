@@ -133,6 +133,7 @@ document.getElementById('example').addEventListener('click', event => {
    Rocket.modal({
       heading: 'Advanced Modal',
       body: 'Here is the body text.',
+      buttons: true,
       close: '<i class="icon-close"></i>',
       breakpoint: 320,
       reveal: 'slide-from-right',
@@ -140,6 +141,9 @@ document.getElementById('example').addEventListener('click', event => {
       parseEvent: event,
       onDone: thisModal => {
          console.log('Modal Loaded!');
+      },
+      onTrue: () => {
+         console.log('The true button was clicked!');
       }
    });
 });
