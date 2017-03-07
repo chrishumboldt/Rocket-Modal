@@ -54,25 +54,25 @@ See the different options you have available on component call.
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
 `body` | | | You can make the body whatever you would like to display.
-`breakpoint` | `700` | | Set the breakpoint of the modal (in pixels) to<br>change from a fullscreen modal to a standard content modal.
-`buttons` | `true` | `true` `false` | Display the modal buttons.<br>**NOTE** that the true button will only<br>display if the `onTrue` argument is set.
+`breakpoint` | `700` | | Set the breakpoint of the modal (in pixels) to change from a fullscreen modal to a standard content modal.
+`buttons` | `true` | `true` `false` | Display the modal buttons.<br>**NOTE** that the true button will only display if the `onTrue` argument is set.
 `buttonFalse` | `Cancel` | | Set the false button text.
 `buttonTrue` | `Ok` | | Set the true button text.
 `classAdd` | | | Set a class to the containing modal.
 `close` | `close` | | Set the text or inner HTML of the close link.
 `heading` | | | You can make the heading whatever you would like.
-`onDone` | | | Set a function that will execute once the modal is<br>either created or the link is triggered.
+`onDone` | | | Set a function that will execute once the modal is either created or the link is triggered.
 `onTrue` | | | Set a function that will execute when the true button is clicked.
 `parseEvent` | | | Parse the event of a click to prevent the default link behavior.
-`reveal` | `slide-from-top` | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation.
-`revealLarge` | | `appear` `appear-scale`<br>`slide-from-bottom`<br>`slide-from-left`<br>`slide-from-right`<br>`slide-from-top` | Set the reveal animation after the breakpoint.<br>**NOTE** that false means the already existing<br>reveal animation will be used.
+`reveal` | `slidefromtop` | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation.
+`revealLarge` | | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
 `target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
 
 #### Defaults
 You can also set or overwrite the above options globally by altering the Rocket defaults. To do so reference the defaults object property. For example:
 
 ```js
-Rocket.defaults.modal.reveal = 'appear-scale';
+Rocket.defaults.modal.reveal = 'appearscale';
 Rocket.defaults.modal.close = 'Exit';
 Rocket.defaults.modal.buttonTrue = 'Yup';
 ```

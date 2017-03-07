@@ -5,18 +5,18 @@ Rocket.defaults.modal = {
     buttonTrue: 'Ok',
     close: 'Close',
     errors: true,
-    reveal: 'slide-from-top',
+    reveal: 'slidefromtop',
     show: 'always'
 };
 var RockMod_Modal;
 (function (RockMod_Modal) {
     var reveals = [
-        '_appear',
-        '_appear-scale',
-        '_slide-from-right',
-        '_slide-from-top',
-        '_slide-from-left',
-        '_slide-from-bottom'
+        'appear',
+        'appearscale',
+        'slidefromright',
+        'slidefromtop',
+        'slidefromleft',
+        'slidefrombottom'
     ];
     var html = {
         addButtons: function (options) {

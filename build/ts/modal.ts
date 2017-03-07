@@ -10,7 +10,7 @@ Rocket.defaults.modal = {
    buttonTrue: 'Ok',
    close: 'Close',
    errors: true,
-   reveal: 'slide-from-top',
+   reveal: 'slidefromtop',
    show: 'always'
 };
 
@@ -18,12 +18,12 @@ Rocket.defaults.modal = {
 module RockMod_Modal {
    // Variables
    const reveals = [
-      '_appear',
-		'_appear-scale',
-		'_slide-from-right',
-		'_slide-from-top',
-		'_slide-from-left',
-		'_slide-from-bottom'
+      'appear',
+		'appearscale',
+		'slidefromright',
+		'slidefromtop',
+		'slidefromleft',
+		'slidefrombottom'
    ];
 
    // Functions
