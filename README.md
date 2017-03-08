@@ -99,10 +99,8 @@ Rocket.defaults.modal.buttonTrue = 'Yup';
 If you want to open a modal that has existing HTML, then target that modal. **Note** that a predefined HTML structure is required.
 
 ```html
-<!-- The link -->
 <a id="modal-link-2" href>Open Target Modal</a>
 
-<!-- The modal -->
 <div id="modal-2" class="rocket-modal">
    <div class="rmo-heading">
       <h6>The Linked Modal Heading</h6>
