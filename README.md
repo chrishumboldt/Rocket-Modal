@@ -7,8 +7,8 @@ A Javascript modal module.
 * [Javascript Options](#javascript-options)
    * [Defaults](#defaults)
 * [Modal Target](#modal-target)
-* [Modal Methods](#modal-methods)
 * [On Done](#on-done)
+* [Modal Methods](#modal-methods)
 * [Advanced Example](#advanced-example)
 * [Modalplate Deprecated](#modalplate-deprecated)
 
@@ -120,6 +120,20 @@ Rocket.modal({
 </script>
 ```
 
+## On Done
+You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. See an example below.
+
+```js
+Rocket.modal({
+   triggers: '#modal-link',
+   heading: 'Text Heading',
+   body: 'This is a simple test'
+   onDone: () => {
+      console.log('All done! Here is the modal element:');
+   }
+});
+```
+
 ## Modal Methods
 Once you have initialised a modal instance, there are some methods and references that you have access to. See below:
 
@@ -139,20 +153,6 @@ setTimeout(() => {
 setTimeout(() => {
    myModal.show();
 }, 2000);
-```
-
-## On Done
-You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. See an example below.
-
-```js
-Rocket.modal({
-   triggers: '#modal-link',
-   heading: 'Text Heading',
-   body: 'This is a simple test'
-   onDone: () => {
-      console.log('All done! Here is the modal element:');
-   }
-});
 ```
 
 ## Advanced Example
