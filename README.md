@@ -7,6 +7,7 @@ A Javascript modal module.
 * [Javascript Options](#javascript-options)
    * [Defaults](#defaults)
 * [Modal Target](#modal-target)
+* [Modal Methods](#modal-methods)
 * [On Done](#on-done)
 * [Advanced Example](#advanced-example)
 * [Modalplate Deprecated](#modalplate-deprecated)
@@ -83,7 +84,7 @@ Name | Default | Options | Description
 `reveal` | `slidefromtop` | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation.
 `revealLarge` | | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
 `target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
-`triggers` | | Set the elements that will trigger the modal event.
+`triggers` | | | Set the elements that will trigger the modal event.
 
 #### Defaults
 You can also set or overwrite the above options globally by altering the Rocket defaults. To do so reference the defaults object property. For example:
@@ -119,6 +120,27 @@ Rocket.modal({
 </script>
 ```
 
+## Modal Methods
+Once you have initialised a modal instance, there are some methods and references that you have access to. See below:
+
+```js
+// This modal is immediately shown as it has no triggers.
+var myModal = Rocket.modal({
+   heading: 'Text Heading',
+   body: 'This is a simple test'
+});
+
+// Manually close the modal
+setTimeout(() => {
+   myModal.close();
+}, 1000);
+
+// Manually show the modal again
+setTimeout(() => {
+   myModal.show();
+}, 2000);
+```
+
 ## On Done
 You can declare a function that will trigger once the modal is created or once the linked modal is set to reveal. See an example below.
 
@@ -127,9 +149,8 @@ Rocket.modal({
    triggers: '#modal-link',
    heading: 'Text Heading',
    body: 'This is a simple test'
-   onDone: thisModal => {
+   onDone: () => {
       console.log('All done! Here is the modal element:');
-      console.log(thisModal);
    }
 });
 ```
@@ -141,7 +162,7 @@ See an advanced example below with options as per the above.
 <a id="example" href>Open Modal</a>
 
 <script>
-Rocket.modal({
+let myModal = Rocket.modal({
    triggers: '#example',
    heading: 'Advanced Modal',
    body: 'Here is the body text.',
@@ -150,11 +171,13 @@ Rocket.modal({
    breakpoint: 320,
    reveal: 'slidefromright',
    revealLarge: 'slidefromtop',
-   onDone: thisModal => {
+   onDone: () => {
       console.log('Modal Loaded!');
    },
    onTrue: () => {
       console.log('The true button was clicked!');
+      myModal.close();
+
    }
 });
 </script>
