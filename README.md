@@ -49,7 +49,7 @@ Rocket.modal({
 ```
 
 #### Manual Initialisation
-It is also possible to manually trigger a modal if you so choose. This is not recommended for targeted modals as you will be initialising each time which is redundant. In this case you probably want to parse the `event` to prevent odd click behaviors. For example:
+It is also possible to manually trigger a modal if you so choose. This is not recommended for [targeted modals](#modal-target) as you will be initialising each time which is redundant. In this case you probably want to parse the `event` to prevent odd click behaviors. For example:
 
 ```html
 <a id="modal-link-1" href>Open New Modal</a>
