@@ -43,7 +43,39 @@ npm install rocket-modal
 </pre>
 			<br>
 			<h4>Basic Example</h4>
-			<p>See a basic example of how to use the component.</p>
+			<p>See a basic example of how to use the module.</p>
+<pre class="prettyprint linenums">
+&lt;a id="modal-link-1" href&gt;Open New Modal&lt;/a&gt;
+
+&lt;script&gt;
+Rocket.modal({
+   triggers: '#modal-link-1',
+   heading: 'Example Modal',
+   body: 'Here is the body text.'
+});
+&lt;/script&gt;
+</pre>
+			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
+<pre class="prettyprint linenums">
+&lt;a id="modal-link-2" href&gt;Open Linked Modal&lt;/a&gt;
+
+&lt;div id="modal-2" class="rocket-modal"&gt;
+    &lt;div class="rmo-heading"&gt;
+        &lt;h6&gt;The Linked Modal Heading&lt;/h6&gt;
+    &lt;/div&gt;
+    &lt;div class="rmo-body"&gt;
+        This is the modal body.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+Rocket.modal({
+   triggers: '#modal-link-2',
+   target: '#modal-2'
+});
+&lt;/script&gt;
+</pre>
+         <p>It is also possible to manually trigger a modal if you so choose. This is not recommended for targeted modals as you will be initialising each time which is redundant. In this case you probably want to parse the <b>event</b> to prevent odd click behaviors. For example:</p>
 <pre class="prettyprint linenums">
 &lt;a id="modal-link-1" href&gt;Open New Modal&lt;/a&gt;
 
@@ -52,28 +84,6 @@ document.getElementById('modal-link-1').addEventListener('click', event => {
    Rocket.modal({
       heading: 'Example Modal',
       body: 'Here is the body text.',
-      parseEvent: event
-   });
-});
-&lt;/script&gt;
-</pre>
-			<p>If you want to open a modal that has existing HTML, then link to the modal. <b>Note</b> that a predefined HTML structure is required.</p>
-<pre class="prettyprint linenums">
-&lt;a id="modal-link-2" href&gt;Open Linked Modal&lt;/a&gt;
-
-&lt;div id="modal-2" class="modalplate"&gt;
-    &lt;div class="modalplate-heading"&gt;
-        &lt;h6&gt;The Linked Modal Heading&lt;/h6&gt;
-    &lt;/div&gt;
-    &lt;div class="modalplate-body"&gt;
-        This is the modal body.
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-document.getElementById('modal-link-2').addEventListener('click', event => {
-   Rocket.modal({
-      target: '#modal-2',
       parseEvent: event
    });
 });
@@ -112,23 +122,19 @@ document.getElementById('modal-link-2').addEventListener('click', event => {
    <script src="node_modules/rocket-tools/js/tools.min.js"></script>
 	<script src="js/modal.min.js"></script>
 	<script>
-   Rocket.event.add(Rocket.dom.element('#modal-link-1'), 'click', function (event) {
-      let modal = Rocket.modal({
-         heading: 'Example Modal',
-         body: 'Here is the body text.',
-         onTrue: function () {
-            modal.close();
-            alert('The ok button works!');
-         },
-         parseEvent: event
-      });
+   let modal = Rocket.modal({
+      triggers: '#modal-link-1',
+      heading: 'Example Modal',
+      body: 'Here is the body text.',
+      onTrue: function () {
+         modal.close();
+         alert('The ok button works!');
+      }
    });
 
-   Rocket.event.add(Rocket.dom.element('#modal-link-2'), 'click', function (event) {
-      Rocket.modal({
-         target: '#modal-2',
-         parseEvent: event
-      });
+   Rocket.modal({
+      triggers: '#modal-link-2',
+      target: '#modal-2'
    });
 	</script>
 

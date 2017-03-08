@@ -3,10 +3,9 @@ Rocket.defaults.modal = {
     buttons: true,
     buttonFalse: 'Cancel',
     buttonTrue: 'Ok',
-    close: 'Close',
+    closeText: 'Close',
     errors: true,
-    reveal: 'slidefromtop',
-    show: 'always'
+    reveal: 'slidefromtop'
 };
 var RockMod_Modal;
 (function (RockMod_Modal) {
@@ -37,7 +36,7 @@ var RockMod_Modal;
             if (!Rocket.exists(options.element.modal.querySelector('.rmo-close'))) {
                 var modalClose = document.createElement('a');
                 Rocket.classes.add(modalClose, 'rmo-close');
-                modalClose.innerHTML = options.close;
+                modalClose.innerHTML = options.closeText;
                 Rocket.event.add(modalClose, 'click', modal.close);
                 options.element.modal.appendChild(modalClose);
             }
@@ -54,45 +53,36 @@ var RockMod_Modal;
                 html.innerHTML = content;
             }
             return html;
-        }
-    };
-    var modal = {
-        close: function (callback) {
-            if (callback === void 0) { callback = null; }
-            if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+        },
+        modalExisting: function (options) {
+            options.element.modal = Rocket.dom.element(options.target);
+            if (!Rocket.is.element(options.element.modal)) {
+                if (Rocket.defaults.modal.errors) {
+                    Rocket.error("Rocket Modal: The " + options.target + " does not exist on the DOM.");
+                }
                 return;
             }
-            if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
-                Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
-                var currentModal_1 = Rocket.dom.element('.rocket-modal._current');
-                if (Rocket.exists(currentModal_1)) {
-                    setTimeout(function () {
-                        if (Rocket.has.class(currentModal_1, '_new')) {
-                            Rocket.dom.remove(currentModal_1);
-                        }
-                        else {
-                            Rocket.classes.remove(currentModal_1, '_current');
-                        }
-                        if (Rocket.is.function(callback)) {
-                            return callback();
-                        }
-                        else {
-                            Rocket.overlay.hide();
-                        }
-                    }, 400);
-                }
+            var modalClasses = "rocket-modal _existing";
+            if (options.classAdd.length > 0) {
+                modalClasses += " " + options.classAdd;
             }
-            else {
-                if (Rocket.is.function(callback)) {
-                    return callback();
-                }
-                else {
-                    Rocket.overlay.hide();
-                }
+            Rocket.classes.add(options.element.modal, modalClasses);
+            html.addClose(options);
+            html.addButtons(options);
+            var heading = options.element.modal.querySelector('.rmo-heading h6');
+            var body = options.element.modal.querySelector('.rmo-body');
+            if (options.heading.length > 0 && heading) {
+                heading.innerHTML = options.heading;
             }
+            ;
+            if (options.body.length > 0 && body) {
+                body.innerHTML = options.body;
+            }
+            ;
+            return options;
         },
-        new: function (options) {
-            var modalClasses = "rocket-modal _reveal _new";
+        modalNew: function (options) {
+            var modalClasses = "rocket-modal _new";
             if (options.classAdd.length > 0) {
                 modalClasses += " " + options.classAdd;
             }
@@ -111,12 +101,41 @@ var RockMod_Modal;
                 options.element.modal.appendChild(modalBody);
             }
             html.addButtons(options);
-            Rocket.dom.body.appendChild(options.element.modal);
-            modal.reveal(options);
-            return {
-                close: modal.close,
-                modal: options.element.modal
-            };
+            return options;
+        }
+    };
+    var modal = {
+        close: function (callback) {
+            if (callback === void 0) { callback = null; }
+            if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+                return;
+            }
+            if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
+                Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
+                var currentModal_1 = Rocket.dom.element('.rocket-modal._reveal');
+                if (Rocket.exists(currentModal_1)) {
+                    setTimeout(function () {
+                        Rocket.classes.remove(currentModal_1, '_reveal');
+                        if (Rocket.has.class(currentModal_1, '_new')) {
+                            Rocket.dom.remove(currentModal_1);
+                        }
+                        if (Rocket.is.function(callback)) {
+                            return callback();
+                        }
+                    }, 250);
+                    if (!Rocket.is.function(callback)) {
+                        Rocket.overlay.hide();
+                    }
+                }
+            }
+            else {
+                if (Rocket.is.function(callback)) {
+                    return callback();
+                }
+                else {
+                    Rocket.overlay.hide();
+                }
+            }
         },
         reveal: function (options) {
             if (reveals.indexOf(options.revealLarge) > -1 && (Rocket.dimensions.width(window) > options.breakpoint)) {
@@ -129,36 +148,23 @@ var RockMod_Modal;
                 modal.close(function () {
                     Rocket.overlay.show();
                     Rocket.classes.add(Rocket.dom.html, 'rmo-reveal');
-                    Rocket.classes.add(options.element.modal, '_current');
-                    if (Rocket.is.function(options.onDone)) {
-                        options.onDone(options.element.modal);
+                    if (options.new) {
+                        Rocket.dom.body.appendChild(options.element.modal);
+                        setTimeout(function () {
+                            Rocket.classes.add(options.element.modal, '_reveal');
+                            if (Rocket.is.function(options.onDone)) {
+                                options.onDone();
+                            }
+                        }, 10);
+                    }
+                    else {
+                        Rocket.classes.add(options.element.modal, '_reveal');
+                        if (Rocket.is.function(options.onDone)) {
+                            options.onDone();
+                        }
                     }
                 });
-            }, 50);
-        },
-        show: function (options) {
-            var modalClasses = "rocket-modal _reveal _existing";
-            if (options.classAdd.length > 0) {
-                modalClasses += " " + options.classAdd;
-            }
-            Rocket.classes.add(options.element.modal, modalClasses);
-            html.addClose(options);
-            html.addButtons(options);
-            var heading = options.element.modal.querySelector('.rmo-heading h6');
-            var body = options.element.modal.querySelector('.rmo-body');
-            if (options.heading.length > 0 && heading) {
-                heading.innerHTML = options.heading;
-            }
-            ;
-            if (options.body.length > 0 && body) {
-                body.innerHTML = options.body;
-            }
-            ;
-            modal.reveal(options);
-            return {
-                close: modal.close,
-                modal: options.element.modal
-            };
+            }, 10);
         }
     };
     function setup() {
@@ -176,7 +182,7 @@ var RockMod_Modal;
             buttonFalse: Rocket.helper.setDefault(uOptions.buttonFalse, _RD.buttonFalse),
             buttonTrue: Rocket.helper.setDefault(uOptions.buttonTrue, _RD.buttonTrue),
             classAdd: Rocket.helper.setDefault(uOptions.classAdd, ''),
-            close: Rocket.helper.setDefault(uOptions.close, _RD.close),
+            closeText: Rocket.helper.setDefault(uOptions.closeText, _RD.closeText),
             element: {},
             heading: Rocket.helper.setDefault(uOptions.heading, ''),
             onDone: (Rocket.is.function(uOptions.onDone)) ? uOptions.onDone : null,
@@ -184,27 +190,41 @@ var RockMod_Modal;
             parseEvent: (uOptions.parseEvent) ? uOptions.parseEvent : null,
             reveal: Rocket.helper.setDefault(uOptions.reveal, _RD.reveal),
             revealLarge: Rocket.helper.setDefault(uOptions.revealLarge, ''),
-            show: Rocket.helper.setDefault(uOptions.show, _RD.show),
-            target: Rocket.helper.setDefault(uOptions.target, '')
+            target: Rocket.helper.setDefault(uOptions.target, ''),
+            triggers: Rocket.helper.setDefault(uOptions.triggers, '')
         };
         if (options.parseEvent) {
             options.parseEvent.preventDefault();
         }
         if (options.target.length > 0) {
-            options.element.modal = Rocket.dom.element(options.target);
-            if (!Rocket.is.element(options.element.modal)) {
-                if (Rocket.defaults.modal.errors) {
-                    Rocket.error("Rocket Modal: The " + options.target + " does not exist on the DOM.");
-                }
-                return;
-            }
-            else {
-                return modal.show(options);
-            }
+            options = html.modalExisting(options);
         }
         else {
-            return modal.new(options);
+            options = html.modalNew(options);
         }
+        options.new = options.target.length < 1;
+        if (options.triggers.length < 1) {
+            modal.reveal(options);
+        }
+        else {
+            var triggers = Rocket.dom.select(options.triggers);
+            if (triggers.length > 0) {
+                for (var _i = 0, triggers_1 = triggers; _i < triggers_1.length; _i++) {
+                    var trigger = triggers_1[_i];
+                    Rocket.event.add(trigger, 'click', function (event) {
+                        event.preventDefault();
+                        modal.reveal(options);
+                    });
+                }
+            }
+        }
+        return {
+            close: modal.close,
+            modal: options.element.modal,
+            show: function () {
+                modal.reveal(options);
+            }
+        };
     }
     RockMod_Modal.init = init;
     setup();
