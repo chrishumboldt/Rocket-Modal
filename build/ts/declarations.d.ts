@@ -9,14 +9,17 @@ declare interface ModalOptions {
    buttonFalse?: string;
    buttonTrue?: string;
    classAdd?: string;
-   close?: string;
+   close?: any;
+   closeText?: string;
    element?: any;
    heading?: string;
+   new?: boolean;
    onDone?: any;
    onTrue?: any;
    parseEvent?: any;
    reveal?: string;
    revealLarge?: string;
-   show?: string;
+   show?: any;
    target?: any;
+   triggers?: any;
 }

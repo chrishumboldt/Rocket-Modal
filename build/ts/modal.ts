@@ -8,10 +8,9 @@ Rocket.defaults.modal = {
    buttons: true,
    buttonFalse: 'Cancel',
    buttonTrue: 'Ok',
-   close: 'Close',
+   closeText: 'Close',
    errors: true,
-   reveal: 'slidefromtop',
-   show: 'always'
+   reveal: 'slidefromtop'
 };
 
 // Module
@@ -50,12 +49,12 @@ module RockMod_Modal {
          if (!Rocket.exists(options.element.modal.querySelector('.rmo-close'))) {
             let modalClose = document.createElement('a');
             Rocket.classes.add(modalClose, 'rmo-close');
-            modalClose.innerHTML = options.close;
+            modalClose.innerHTML = options.closeText;
             Rocket.event.add(modalClose, 'click', modal.close);
             options.element.modal.appendChild(modalClose);
          }
       },
-      element: function (type: string, classes: string, content): any {
+      element: (type: string, classes: string, content): any => {
          // Catch
          if (!Rocket.is.string(type)) {
             return false;
@@ -69,115 +68,20 @@ module RockMod_Modal {
             html.innerHTML = content;
          }
          return html;
-      }
-   }
-   const modal = {
-      close: (callback = null) => {
-         /*
-         Catch and make sure a Rocket message is not open. This is to prevent
-         the two modules from conflicting with each other. It can get kinda tricky.
-         */
-         if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+      },
+      modalExisting: (options: ModalOptions) => {
+         options.element.modal = Rocket.dom.element(options.target);
+
+         // Catch non existing modals
+         if (!Rocket.is.element(options.element.modal)) {
+            if (Rocket.defaults.modal.errors) {
+               Rocket.error(`Rocket Modal: The ${options.target} does not exist on the DOM.`);
+            }
             return;
          }
 
-         // Continue
-         if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
-            Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
-
-            let currentModal = Rocket.dom.element('.rocket-modal._current');
-            if (Rocket.exists(currentModal)) {
-               setTimeout(() => {
-                  if (Rocket.has.class(currentModal, '_new')) {
-                     Rocket.dom.remove(currentModal);
-                  }
-                  else {
-                     Rocket.classes.remove(currentModal, '_current');
-                  }
-                  if (Rocket.is.function(callback)) {
-                     return callback();
-                  }
-                  else {
-                     Rocket.overlay.hide();
-                  }
-               }, 400);
-            }
-         }
-         else {
-            if (Rocket.is.function(callback)) {
-               return callback();
-            }
-            else {
-               Rocket.overlay.hide();
-            }
-         }
-      },
-      new: (options: ModalOptions) => {
          // Classes
-         let modalClasses = `rocket-modal _reveal _new`;
-         if (options.classAdd.length > 0) {
-            modalClasses += ` ${options.classAdd}`;
-         }
-
-         // Modal container
-         let modalHTML = document.createElement('div');
-         Rocket.classes.add(modalHTML, modalClasses);
-         options.element.modal = modalHTML;
-
-         // Modal close
-         html.addClose(options);
-
-         // Modal heading
-         if (options.heading.length > 0) {
-            let modalHeading = html.element('div', 'rmo-heading', '');
-            let modalHeadingInner = html.element('h6', '', options.heading);
-            modalHeading.appendChild(modalHeadingInner);
-            options.element.modal.appendChild(modalHeading);
-         }
-
-         // Modal body
-         if (options.body.length > 0) {
-            let modalBody = html.element('div', 'rmo-body', options.body);
-            options.element.modal.appendChild(modalBody);
-         }
-
-         // Modal Buttons
-         html.addButtons(options);
-
-         // Append the new HTML
-         Rocket.dom.body.appendChild(options.element.modal);
-         modal.reveal(options);
-
-         return {
-            close: modal.close,
-            modal: options.element.modal
-         }
-      },
-      reveal: (options: ModalOptions) => {
-         // Reveals
-         if (reveals.indexOf(options.revealLarge) > -1 && (Rocket.dimensions.width(window) > options.breakpoint)) {
-            Rocket.classes.add(options.element.modal, ` _${options.revealLarge}`);
-         }
-         else {
-            Rocket.classes.add(options.element.modal, ` _${options.reveal}`);
-         }
-
-         // Close old modals and show new modal
-         setTimeout(() => {
-            modal.close(() => {
-               Rocket.overlay.show();
-               Rocket.classes.add(Rocket.dom.html, 'rmo-reveal');
-               Rocket.classes.add(options.element.modal, '_current');
-
-               if (Rocket.is.function(options.onDone)) {
-                  options.onDone(options.element.modal);
-               }
-            });
-         }, 50);
-      },
-      show: (options: ModalOptions) => {
-         // Classes
-         let modalClasses = `rocket-modal _reveal _existing`;
+         let modalClasses = `rocket-modal _existing`;
          if (options.classAdd.length > 0) {
             modalClasses += ` ${options.classAdd}`;
          }
@@ -198,12 +102,109 @@ module RockMod_Modal {
             body.innerHTML = options.body;
          };
 
-         modal.reveal(options);
-
-         return {
-            close: modal.close,
-            modal: options.element.modal
+         return options;
+      },
+      modalNew: (options: ModalOptions) => {
+         // Classes
+         let modalClasses = `rocket-modal _new`;
+         if (options.classAdd.length > 0) {
+            modalClasses += ` ${options.classAdd}`;
          }
+
+         // HTML
+         let modalHTML = document.createElement('div');
+         Rocket.classes.add(modalHTML, modalClasses);
+         options.element.modal = modalHTML;
+
+         html.addClose(options);
+
+         if (options.heading.length > 0) {
+            let modalHeading = html.element('div', 'rmo-heading', '');
+            let modalHeadingInner = html.element('h6', '', options.heading);
+            modalHeading.appendChild(modalHeadingInner);
+            options.element.modal.appendChild(modalHeading);
+         }
+
+         if (options.body.length > 0) {
+            let modalBody = html.element('div', 'rmo-body', options.body);
+            options.element.modal.appendChild(modalBody);
+         }
+
+         html.addButtons(options);
+
+         return options;
+      }
+   }
+   const modal = {
+      close: (callback = null) => {
+         /*
+         Catch and make sure a Rocket message is not open. This is to prevent
+         the two modules from conflicting with each other. It can get kinda tricky.
+         */
+         if (Rocket.has.class(Rocket.dom.html, 'rm-reveal')) {
+            return;
+         }
+
+         // Continue
+         if (Rocket.has.class(Rocket.dom.html, 'rmo-reveal')) {
+            Rocket.classes.remove(Rocket.dom.html, 'rmo-reveal');
+
+            let currentModal = Rocket.dom.element('.rocket-modal._reveal');
+            if (Rocket.exists(currentModal)) {
+               setTimeout(() => {
+                  Rocket.classes.remove(currentModal, '_reveal');
+                  if (Rocket.has.class(currentModal, '_new')) {
+                     Rocket.dom.remove(currentModal);
+                  }
+
+                  if (Rocket.is.function(callback)) {
+                     return callback();
+                  }
+               }, 250);
+
+               if (!Rocket.is.function(callback)) {
+                  Rocket.overlay.hide();
+               }
+            }
+         }
+         else {
+            if (Rocket.is.function(callback)) {
+               return callback();
+            }
+            else {
+               Rocket.overlay.hide();
+            }
+         }
+      },
+      reveal: (options: ModalOptions) => {
+         // Reveals
+         if (reveals.indexOf(options.revealLarge) > -1 && (Rocket.dimensions.width(window) > options.breakpoint)) {
+            Rocket.classes.add(options.element.modal, ` _${options.revealLarge}`);
+         }
+         else {
+            Rocket.classes.add(options.element.modal, ` _${options.reveal}`);
+         }
+
+         // Close old modals and show new modal
+         setTimeout(() => {
+            modal.close(() => {
+               Rocket.overlay.show();
+               Rocket.classes.add(Rocket.dom.html, 'rmo-reveal');
+               if (options.new) {
+                  Rocket.dom.body.appendChild(options.element.modal);
+                  setTimeout(() => {
+                     Rocket.classes.add(options.element.modal, '_reveal');
+
+                     if (Rocket.is.function(options.onDone)) { options.onDone(); }
+                  }, 10);
+               }
+               else {
+                  Rocket.classes.add(options.element.modal, '_reveal');
+
+                  if (Rocket.is.function(options.onDone)) { options.onDone(); }
+               }
+            });
+         }, 10);
       }
    };
 
@@ -224,7 +225,7 @@ module RockMod_Modal {
          buttonFalse: Rocket.helper.setDefault(uOptions.buttonFalse, _RD.buttonFalse),
          buttonTrue: Rocket.helper.setDefault(uOptions.buttonTrue, _RD.buttonTrue),
          classAdd: Rocket.helper.setDefault(uOptions.classAdd, ''),
-         close: Rocket.helper.setDefault(uOptions.close, _RD.close),
+         closeText: Rocket.helper.setDefault(uOptions.closeText, _RD.closeText),
          element: {},
          heading: Rocket.helper.setDefault(uOptions.heading, ''),
          onDone: (Rocket.is.function(uOptions.onDone)) ? uOptions.onDone : null,
@@ -232,29 +233,45 @@ module RockMod_Modal {
          parseEvent: (uOptions.parseEvent) ? uOptions.parseEvent : null,
          reveal: Rocket.helper.setDefault(uOptions.reveal, _RD.reveal),
          revealLarge: Rocket.helper.setDefault(uOptions.revealLarge, ''),
-         show: Rocket.helper.setDefault(uOptions.show, _RD.show),
-         target: Rocket.helper.setDefault(uOptions.target, '')
+         target: Rocket.helper.setDefault(uOptions.target, ''),
+         triggers: Rocket.helper.setDefault(uOptions.triggers, '')
       };
 
       // Check for event parsing
       if (options.parseEvent) { options.parseEvent.preventDefault(); }
 
-      // Check to see if the modal links to an existing element or is a new modal.
+      // Check to see if the modal links to an existing element or is a new modal
       if (options.target.length > 0) {
-         options.element.modal = Rocket.dom.element(options.target);
-
-         if (!Rocket.is.element(options.element.modal)) {
-            if (Rocket.defaults.modal.errors) {
-               Rocket.error(`Rocket Modal: The ${options.target} does not exist on the DOM.`);
-            }
-            return;
-         }
-         else {
-            return modal.show(options);
-         }
+         options = html.modalExisting(options);
       }
       else {
-         return modal.new(options);
+         options = html.modalNew(options);
+      }
+
+      // Show right away or trigger from element
+      options.new = options.target.length < 1;
+      if (options.triggers.length < 1) {
+         modal.reveal(options);
+      }
+      else {
+         const triggers = Rocket.dom.select(options.triggers);
+
+         if (triggers.length > 0) {
+            for (let trigger of triggers) {
+               Rocket.event.add(trigger, 'click', event => {
+                  event.preventDefault();
+                  modal.reveal(options);
+               });
+            }
+         }
+      }
+
+      return {
+         close: modal.close,
+         modal: options.element.modal,
+         show: () => {
+            modal.reveal(options);
+         }
       }
    }
 
