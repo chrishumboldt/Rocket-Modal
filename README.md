@@ -34,7 +34,7 @@ Start by including the necessary files.
 ```
 
 ## Basic Example
-See a basic example of how to use the component.
+See a basic example of how to use the module.
 
 ```html
 <a id="modal-link-1" href>Open New Modal</a>
@@ -66,7 +66,7 @@ document.getElementById('modal-link-1').addEventListener('click', event => {
 ```
 
 ## Javascript Options
-See the different options you have available on component call.
+See the different options you have available on module call.
 
 Name | Default | Options | Description
 ---- | ---- | ---- | ----
