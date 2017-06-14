@@ -41,7 +41,7 @@ See a basic example of how to use the module.
 
 <script>
 Rocket.modal({
-   triggers: '#modal-link-1',
+   trigger: '#modal-link-1',
    heading: 'Example Modal',
    body: 'Here is the body text.'
 });
@@ -84,7 +84,7 @@ Name | Default | Options | Description
 `reveal` | `slidefromtop` | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation.
 `revealLarge` | | `appear` `appearscale`<br>`slidefrombottom`<br>`slidefromleft`<br>`slidefromright`<br>`slidefromtop` | Set the reveal animation after the breakpoint has been reached.<br>**NOTE** that false means the already existing reveal animation will be used.
 `target` | `false` | | Instead of creating a new modal, you can open an existing modal with a particular selector.
-`triggers` | | | Set the elements that will trigger the modal event.
+`trigger` | | | Set the elements that will trigger the modal event.
 
 #### Defaults
 You can also set or overwrite the above options globally by altering the Rocket defaults. To do so reference the defaults object property. For example:
@@ -112,7 +112,7 @@ If you want to open a modal that has existing HTML, then target that modal. **No
 
 <script>
 Rocket.modal({
-   triggers: 'modal-link-2',
+   trigger: 'modal-link-2',
    target: '#modal-2'
 });
 </script>
@@ -123,7 +123,7 @@ You can declare a function that will trigger once the modal is created or once t
 
 ```js
 Rocket.modal({
-   triggers: '#modal-link',
+   trigger: '#modal-link',
    heading: 'Text Heading',
    body: 'This is a simple test'
    onDone: () => {
@@ -136,7 +136,7 @@ Rocket.modal({
 Once you have initialised a modal instance, there are some methods and references that you have access to. See below:
 
 ```js
-// This modal is immediately shown as it has no triggers.
+// This modal is immediately shown as it has no trigger.
 var myModal = Rocket.modal({
    heading: 'Text Heading',
    body: 'This is a simple test'
@@ -161,7 +161,7 @@ See an advanced example below with options as per the above.
 
 <script>
 let myModal = Rocket.modal({
-   triggers: '#example',
+   trigger: '#example',
    heading: 'Advanced Modal',
    body: 'Here is the body text.',
    buttons: true,

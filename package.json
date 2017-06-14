@@ -1,31 +1,31 @@
 {
-  "name": "rocket-modal",
-  "version": "4.1.0",
-  "description": "A Javascript modal module.",
-  "main": "index.html",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chrishumboldt/Rocket-Modal.git"
-  },
-  "keywords": [
-    "Rocket",
-    "Part",
-    "Module",
-    "Modal",
-    "Javascript",
-    "CSS"
-  ],
-  "author": "Chris Humboldt <chrismodem@gmail.com>",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/chrishumboldt/Rocket-Modal/issues"
-  },
-  "homepage": "https://github.com/chrishumboldt/Rocket-Modal#readme",
-  "devDependencies": {
-    "rocket-demo": "^2.0.1",
-    "rocket-propel": "^3.0.3"
-  },
-  "dependencies": {
-    "rocket-tools": "^1.13.2"
-  }
+   "name": "rocket-modal",
+   "version": "4.1.1",
+   "description": "A Javascript modal module.",
+   "main": "index.html",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/chrishumboldt/Rocket-Modal.git"
+   },
+   "keywords": [
+      "Rocket",
+      "Part",
+      "Module",
+      "Modal",
+      "Javascript",
+      "CSS"
+   ],
+   "author": "Chris Humboldt <chrismodem@gmail.com>",
+   "license": "Apache-2.0",
+   "bugs": {
+      "url": "https://github.com/chrishumboldt/Rocket-Modal/issues"
+   },
+   "homepage": "https://github.com/chrishumboldt/Rocket-Modal#readme",
+   "dependencies": {
+      "rocket-tools": "^1.14.3"
+   },
+   "devDependencies": {
+      "rocket-demo": "^2.0.1",
+      "rocket-propel": "^3.0.3"
+   }
 }

@@ -1,6 +1,6 @@
-/*
-Author: Chris Humboldt
-*/
+/**
+@author Chris Humboldt
+**/
 
 declare interface ModalOptions {
    body?: string;
@@ -21,5 +21,5 @@ declare interface ModalOptions {
    revealLarge?: string;
    show?: any;
    target?: any;
-   triggers?: any;
+   trigger?: any;
 }
