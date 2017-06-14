@@ -1,6 +1,6 @@
-/*
-Author: Chris Humboldt
-*/
+/**
+@author Chris Humboldt
+**/
 
 // Extend Rocket
 Rocket.defaults.modal = {
@@ -234,7 +234,7 @@ module RockMod_Modal {
          reveal: Rocket.helper.setDefault(uOptions.reveal, _RD.reveal),
          revealLarge: Rocket.helper.setDefault(uOptions.revealLarge, ''),
          target: Rocket.helper.setDefault(uOptions.target, ''),
-         triggers: Rocket.helper.setDefault(uOptions.triggers, '')
+         trigger: Rocket.helper.setDefault(uOptions.trigger, '')
       };
 
       // Check for event parsing
@@ -250,11 +250,11 @@ module RockMod_Modal {
 
       // Show right away or trigger from element
       options.new = options.target.length < 1;
-      if (options.triggers.length < 1) {
+      if (options.trigger.length < 1) {
          modal.reveal(options);
       }
       else {
-         const triggers = Rocket.dom.select(options.triggers);
+         const triggers = Rocket.dom.select(options.trigger);
 
          if (triggers.length > 0) {
             for (let trigger of triggers) {
